@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FramePro</string>
     <string name="new_register">Novo Registro</string>
+    <string name="measures_result">%1$dL X %2$dh</string>
 </resources>
