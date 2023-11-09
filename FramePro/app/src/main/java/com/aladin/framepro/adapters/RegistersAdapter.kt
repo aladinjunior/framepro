@@ -9,8 +9,14 @@ import com.aladin.framepro.databinding.RegistersListItemBinding
 class RegistersAdapter : RecyclerView.Adapter<RegistersAdapter.RegistersViewHolder>(){
 
 
-    private val listOfRegisters: List<Register> = mutableListOf()
+    private val listOfRegisters: MutableList<Register> = mutableListOf()
 
+
+    fun setList(newList: List<Register>){
+        listOfRegisters.clear()
+        listOfRegisters.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegistersViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

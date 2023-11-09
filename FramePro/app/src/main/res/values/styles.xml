@@ -5,4 +5,13 @@
         <item name="cornerSize">10%</item>
     </style>
 
+    <style name="NoRoundedCornersButton" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.NoRoundedCorners</item>
+    </style>
+
+    <style name="ShapeAppearance.NoRoundedCorners" parent="">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
 </resources>

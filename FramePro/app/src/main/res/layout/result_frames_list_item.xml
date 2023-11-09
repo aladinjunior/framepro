@@ -47,8 +47,6 @@
         android:textStyle="italic"
         android:text="@string/measures_result" />
 
-
-
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
