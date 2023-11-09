@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/covered_movie_background"
+        android:drawable="@drawable/pcorrer_2f"/>
+    <item>
+        <shape>
+            <gradient android:startColor="@color/black"
+                android:centerColor="@android:color/transparent"
+                android:endColor="@android:color/transparent"
+                android:angle="90"/>
+        </shape>
+    </item>
+</layer-list>
