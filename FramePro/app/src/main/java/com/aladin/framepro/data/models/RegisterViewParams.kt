@@ -1,9 +1,6 @@
 package com.aladin.framepro.data.models
 
-import androidx.room.PrimaryKey
-
-
-data class Register(
+data class RegisterViewParams(
     var name: String = "",
     var address: String = ""
 )
