@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.aladin.framepro.R
 import com.aladin.framepro.data.models.Register
-import com.aladin.framepro.data.models.RegisterViewParams
 import com.aladin.framepro.databinding.FragmentNewRegisterSheetBinding
 import com.aladin.framepro.extensions.setSheetBackground
 import com.aladin.framepro.viewmodels.RegisterViewModel
@@ -31,7 +32,7 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
 
         val activity = requireActivity()
         registerViewModel = ViewModelProvider(activity)[RegisterViewModel::class.java]
-        with(binding){
+        with(binding) {
             saveBttn.setOnClickListener {
                 register()
             }
@@ -40,15 +41,22 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
     }
 
 
-    private fun register(){
+    private fun register() {
         val name = binding.name.text.toString()
         val address = binding.address.text.toString()
+        if (isNotEmptyData(name, address)){
+            val register = Register(name, address)
+            registerViewModel.register(register)
+            dismiss()
+        } else {
+            dismiss()
+            Toast.makeText(requireContext(), getString(R.string.fields_cant_be_null), Toast.LENGTH_SHORT).show()
+        }
 
+    }
 
-        val register = Register(name, address)
-
-        registerViewModel.register(register)
-        dismiss()
+    private fun isNotEmptyData(name: String, address: String): Boolean {
+        return name.isNotEmpty() && name.isNotBlank() && address.isNotEmpty() && address.isNotBlank()
     }
 
 

@@ -5,16 +5,12 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aladin.framepro.adapters.RegistersAdapter
-import com.aladin.framepro.data.db.AppDatabase
-import com.aladin.framepro.data.db.repositories.RegisterDbDataSource
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.ActivityMainBinding
 import com.aladin.framepro.ui.NewRegisterSheet
 import com.aladin.framepro.viewmodels.RegisterViewModel
 
 class MainActivity : AppCompatActivity() {
-
-
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -29,16 +25,14 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var adapter: RegistersAdapter
-    private var name: String = "aladin"
-    private var address: String = "junior"
+    private var name: String = ""
+    private var address: String = ""
 
     private val listOfRegisters: MutableList<Register> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
@@ -53,18 +47,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         register()
-        
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        registerViewModel.allRegisters.observe(this) {
+            it?.let{
+                adapter.setList(it)
+            }
+        }
     }
 
 
     private fun register() {
-
         registerViewModel.name.observe(this) { name ->
             this.name = name
-
         }
-
         registerViewModel.address.observe(this) { address ->
             this.address = address
             listOfRegisters.add(Register(name = name, address = address))

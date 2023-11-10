@@ -7,4 +7,5 @@
     <string name="name">Nome</string>
     <string name="address">Endereço</string>
     <string name="save">Salvar</string>
+    <string name="fields_cant_be_null">Impossível salvar, certifique-se de que nenhum campo está vazio.</string>
 </resources>
