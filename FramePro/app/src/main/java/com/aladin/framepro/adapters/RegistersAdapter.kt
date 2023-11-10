@@ -9,7 +9,7 @@ import com.aladin.framepro.databinding.RegistersListItemBinding
 class RegistersAdapter : RecyclerView.Adapter<RegistersAdapter.RegistersViewHolder>(){
 
 
-    private val listOfRegisters: MutableList<Register> = mutableListOf()
+    val listOfRegisters: MutableList<Register> = mutableListOf()
 
 
     fun setList(newList: List<Register>){
@@ -17,6 +17,13 @@ class RegistersAdapter : RecyclerView.Adapter<RegistersAdapter.RegistersViewHold
         listOfRegisters.addAll(newList)
         notifyDataSetChanged()
     }
+
+    fun removeRegister(position: Int) {
+        listOfRegisters.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegistersViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

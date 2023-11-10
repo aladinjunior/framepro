@@ -17,11 +17,13 @@ class RegisterDbDataSource(
         }
     }
 
-
     override suspend fun createRegister(register: Register) {
         val registerEntity = register.toRegisterEntity()
-        registerDao.insert(registerEntity)
+        registerDao.register(registerEntity)
     }
 
-
+    override suspend fun deleteRegister(register: Register) {
+        val registerEntity = register.toRegisterEntity()
+        registerDao.delete(registerEntity)
+    }
 }

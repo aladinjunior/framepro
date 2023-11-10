@@ -1,13 +1,14 @@
-package com.aladin.framepro
+package com.aladin.framepro.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aladin.framepro.adapters.RegistersAdapter
+import com.aladin.framepro.adapters.SwipeRegister
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.ActivityMainBinding
-import com.aladin.framepro.ui.NewRegisterSheet
 import com.aladin.framepro.viewmodels.RegisterViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         RegistersAdapter()
     }
 
+    private val itemTouchHelper by lazy {
+        ItemTouchHelper(SwipeRegister(adapter, registerViewModel))
+    }
+
 
     private var name: String = ""
     private var address: String = ""
@@ -41,10 +46,15 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
 
+        with(binding){
+            registerRv.layoutManager = LinearLayoutManager(this@MainActivity)
+            registerRv.adapter = adapter
+
+            itemTouchHelper.attachToRecyclerView(registerRv)
+        }
 
 
-        binding.registerRv.layoutManager = LinearLayoutManager(this)
-        binding.registerRv.adapter = adapter
+
 
         binding.newRegisterBttn.setOnClickListener {
             NewRegisterSheet().show(supportFragmentManager, "newRegisterTag")
@@ -81,6 +91,6 @@ class MainActivity : AppCompatActivity() {
             adapter.setList(listOfRegisters)
         }
 
-
     }
+
 }

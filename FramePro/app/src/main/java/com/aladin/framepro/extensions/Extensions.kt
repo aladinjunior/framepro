@@ -7,6 +7,7 @@ import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
 import com.aladin.framepro.data.db.RegisterEntity
 import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.data.repositories.RegisterRepository
 import com.aladin.framepro.ui.NewRegisterSheet
 import com.google.android.material.bottomsheet.BottomSheetDialog
 

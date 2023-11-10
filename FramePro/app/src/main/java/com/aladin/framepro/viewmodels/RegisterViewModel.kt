@@ -40,5 +40,11 @@ class RegisterViewModel(
 
     }
 
+    fun delete(register: Register) : Job {
+        return viewModelScope.launch(Dispatchers.IO) {
+            registerRepository.deleteRegister(register)
+        }
+    }
+
 
 }
