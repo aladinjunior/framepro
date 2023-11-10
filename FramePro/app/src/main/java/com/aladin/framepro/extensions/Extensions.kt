@@ -34,6 +34,7 @@ fun Register.toRegisterEntity() : RegisterEntity{
 fun RegisterEntity.toRegister() : Register{
     return with(this){
         Register(
+            id = id,
             name = name,
             address = address
         )

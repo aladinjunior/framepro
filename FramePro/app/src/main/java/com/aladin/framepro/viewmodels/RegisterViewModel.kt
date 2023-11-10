@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aladin.framepro.data.db.AppDatabase
-import com.aladin.framepro.data.db.repositories.RegisterDbDataSource
-import com.aladin.framepro.data.db.repositories.RegisterRepository
+import com.aladin.framepro.data.repositories.RegisterDbDataSource
+import com.aladin.framepro.data.repositories.RegisterRepository
 import com.aladin.framepro.data.models.Register
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -19,6 +19,7 @@ class RegisterViewModel(
 
     val name = MutableLiveData<String>()
     val address = MutableLiveData<String>()
+    val id = MutableLiveData<Long>()
 
 
     private val registerRepository: RegisterRepository

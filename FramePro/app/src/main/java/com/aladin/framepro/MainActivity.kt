@@ -23,10 +23,14 @@ class MainActivity : AppCompatActivity() {
         )[RegisterViewModel::class.java]
     }
 
+    private val adapter by lazy {
+        RegistersAdapter()
+    }
 
-    private lateinit var adapter: RegistersAdapter
+
     private var name: String = ""
     private var address: String = ""
+    private var id: Long = 0
 
     private val listOfRegisters: MutableList<Register> = mutableListOf()
 
@@ -37,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
 
-        adapter = RegistersAdapter()
+
 
         binding.registerRv.layoutManager = LinearLayoutManager(this)
         binding.registerRv.adapter = adapter
@@ -46,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             NewRegisterSheet().show(supportFragmentManager, "newRegisterTag")
         }
 
-        register()
+        createRegisterView()
 
 
     }
@@ -62,13 +66,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun register() {
+    private fun createRegisterView() {
         registerViewModel.name.observe(this) { name ->
             this.name = name
         }
+
+        registerViewModel.id.observe(this) { id ->
+            this.id = id
+        }
+
         registerViewModel.address.observe(this) { address ->
             this.address = address
-            listOfRegisters.add(Register(name = name, address = address))
+            listOfRegisters.add(Register(id = id, name = name, address = address))
             adapter.setList(listOfRegisters)
         }
 

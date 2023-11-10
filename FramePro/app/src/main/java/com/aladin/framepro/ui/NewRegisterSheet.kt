@@ -34,18 +34,18 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
         registerViewModel = ViewModelProvider(activity)[RegisterViewModel::class.java]
         with(binding) {
             saveBttn.setOnClickListener {
-                register()
+                saveOnDb()
             }
         }
 
     }
 
 
-    private fun register() {
+    private fun saveOnDb() {
         val name = binding.name.text.toString()
         val address = binding.address.text.toString()
         if (isNotEmptyData(name, address)){
-            val register = Register(name, address)
+            val register = Register(name = name, address = address)
             registerViewModel.register(register)
             dismiss()
         } else {

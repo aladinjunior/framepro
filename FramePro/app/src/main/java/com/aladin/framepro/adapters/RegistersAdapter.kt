@@ -36,6 +36,7 @@ class RegistersAdapter : RecyclerView.Adapter<RegistersAdapter.RegistersViewHold
 
         fun bind(register: Register){
             with(binding){
+                id.text = register.id.toString()
                 name.text = register.name
                 address.text = register.address
             }
