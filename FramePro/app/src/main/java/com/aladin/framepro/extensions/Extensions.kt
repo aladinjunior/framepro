@@ -26,6 +26,7 @@ fun NewRegisterSheet.setSheetBackground(){
 fun Register.toRegisterEntity() : RegisterEntity{
     return with(this){
         RegisterEntity(
+            id = id,
             name = name,
             address = address
         )

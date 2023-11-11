@@ -1,8 +1,10 @@
 package com.aladin.framepro.adapters
 
 import android.util.Log
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.viewmodels.RegisterViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,9 +30,13 @@ class SwipeRegister(private val registerAdapter: RegistersAdapter,
         val position = viewHolder.adapterPosition
         val register = registerAdapter.listOfRegisters[position]
 
-        GlobalScope.launch(Dispatchers.IO) {
-            registerViewModel.delete(register)
-            Log.i("roomdb", "deleted")
+        try {
+            registerViewModel.viewModelScope.launch(Dispatchers.IO) {
+                registerViewModel.delete(register)
+                Log.i("roomdb", "deleted")
+            }
+        } catch (e: Exception) {
+            Log.e("roomdb", "Error deleting register: ${e.message}")
         }
 
 
