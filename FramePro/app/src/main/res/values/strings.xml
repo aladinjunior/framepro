@@ -9,4 +9,16 @@
     <string name="save">Salvar</string>
     <string name="fields_cant_be_null">Impossível salvar, certifique-se de que nenhum campo está vazio.</string>
     <string name="type_frame_name">Nome da Esquadria</string>
+    <string name="pcorrer_2f">Porta de Correr 2 Folhas</string>
+    <string name="aluminium">Alumínio</string>
+    <string name="keep_body">Guarda Corpo</string>
+    <string name="fixed">Quadro Fixo</string>
+    <string name="maxim_ar">Maxim Ar</string>
+    <string name="pivot">Pivotante</string>
+    <string name="jcorrer_4f">Janela de Correr 4 Folhas</string>
+    <string name="jcorrer_3f">Janela de Correr 3 Folhas</string>
+    <string name="jcorrer_2f">Janela de Correr 2 Folhas</string>
+    <string name="pspin">Porta de Giro</string>
+    <string name="pcorrer_4f">Porta de Correr 4 Folhas</string>
+    <string name="pcorrer_3f">Porta de Correr 3 Folhas</string>
 </resources>

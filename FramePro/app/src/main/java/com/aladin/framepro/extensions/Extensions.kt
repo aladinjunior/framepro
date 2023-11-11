@@ -2,9 +2,11 @@ package com.aladin.framepro.extensions
 
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
+import com.aladin.framepro.data.models.Frame
 import com.aladin.framepro.data.models.RegisterEntity
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.ui.NewRegisterSheet
@@ -48,4 +50,22 @@ fun <T, U> LiveData<T>.map(transform: (T) -> U): LiveData<U> {
         result.value = transform(data)
     }
     return result
+}
+
+fun Fragment.buildFrames() : List<Frame> {
+    return listOf(
+
+            Frame(R.drawable.pcorrer_2f, getString(R.string.pcorrer_2f)),
+            Frame(R.drawable.pcorrer_3f, getString(R.string.pcorrer_3f)),
+            Frame(R.drawable.pcorrer_4f, getString(R.string.pcorrer_4f)),
+            Frame(R.drawable.pgiro, getString(R.string.pspin)),
+            Frame(R.drawable.jcorrer_2f, getString(R.string.jcorrer_2f)),
+            Frame(R.drawable.jcorrer_3f, getString(R.string.jcorrer_3f)),
+            Frame(R.drawable.jcorrer_4f, getString(R.string.jcorrer_4f)),
+            Frame(R.drawable.pivotante, getString(R.string.pivot)),
+            Frame(R.drawable.maxim_ar, getString(R.string.maxim_ar)),
+            Frame(R.drawable.quadro_fixo, getString(R.string.fixed)),
+            Frame(R.drawable.guarda_corpo, getString(R.string.keep_body))
+        )
+
 }
