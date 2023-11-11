@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -38,6 +39,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -51,17 +53,21 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-alpha02")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-alpha02")
 
-        val roomVersion = "2.5.2"
 
-        // Coroutines
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
-        // Room
-        implementation("androidx.room:room-runtime:$roomVersion")
-        kapt("androidx.room:room-compiler:$roomVersion")
-        implementation("androidx.room:room-ktx:$roomVersion")
+    // Room
+    implementation("androidx.room:room-runtime:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
 
-    
+
+    //Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

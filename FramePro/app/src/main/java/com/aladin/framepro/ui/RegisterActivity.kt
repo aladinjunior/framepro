@@ -17,28 +17,6 @@ class RegisterActivity : AppCompatActivity() {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
 
-    private val registerViewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        )[RegisterViewModel::class.java]
-    }
-
-    private val adapter by lazy {
-        RegistersAdapter()
-    }
-
-    private val itemTouchHelper by lazy {
-        ItemTouchHelper(SwipeRegister(adapter, registerViewModel))
-    }
-
-
-    private var name: String = ""
-    private var address: String = ""
-    private var id: Long = 0
-
-    private val listOfRegisters: MutableList<Register> = mutableListOf()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -46,51 +24,12 @@ class RegisterActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = ""
 
-        with(binding){
-            registerRv.layoutManager = LinearLayoutManager(this@RegisterActivity)
-            registerRv.adapter = adapter
-
-            itemTouchHelper.attachToRecyclerView(registerRv)
-        }
-
-
-
-
-        binding.newRegisterBttn.setOnClickListener {
-            NewRegisterSheet().show(supportFragmentManager, "newRegisterTag")
-        }
-
-        createRegisterView()
 
 
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        registerViewModel.allRegisters.observe(this) {
-            it?.let{
-                adapter.setList(it)
-            }
-        }
-    }
 
 
-    private fun createRegisterView() {
-        registerViewModel.name.observe(this) { name ->
-            this.name = name
-        }
 
-        registerViewModel.id.observe(this) { id ->
-            this.id = id
-        }
-
-        registerViewModel.address.observe(this) { address ->
-            this.address = address
-            listOfRegisters.add(Register(id = id, name = name, address = address))
-            adapter.setList(listOfRegisters)
-        }
-
-    }
 
 }
