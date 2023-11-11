@@ -25,7 +25,6 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.title = ""
 
 
-
     }
 
 

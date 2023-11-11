@@ -4,10 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FramesActivity"
+    tools:context=".ui.FramesFragment"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.SearchView
+    <View
+        android:id="@+id/top_background"
+        android:background="@color/purple_background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
+    <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,5 +61,12 @@
             />
 
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/frames_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_background"
+        tools:listitem="@layout/frames_list_item"/>
 
 </RelativeLayout>
