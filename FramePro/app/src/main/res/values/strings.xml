@@ -8,4 +8,5 @@
     <string name="address">Endereço</string>
     <string name="save">Salvar</string>
     <string name="fields_cant_be_null">Impossível salvar, certifique-se de que nenhum campo está vazio.</string>
+    <string name="type_frame_name">Nome da Esquadria</string>
 </resources>

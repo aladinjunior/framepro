@@ -5,9 +5,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
-import com.aladin.framepro.data.db.RegisterEntity
+import com.aladin.framepro.data.models.RegisterEntity
 import com.aladin.framepro.data.models.Register
-import com.aladin.framepro.data.repositories.RegisterRepository
 import com.aladin.framepro.ui.NewRegisterSheet
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -23,7 +22,7 @@ fun NewRegisterSheet.setSheetBackground(){
 }
 
 
-fun Register.toRegisterEntity() : RegisterEntity{
+fun Register.toRegisterEntity() : RegisterEntity {
     return with(this){
         RegisterEntity(
             id = id,

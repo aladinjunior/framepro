@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aladin.framepro.adapters.RegistersAdapter
 import com.aladin.framepro.adapters.SwipeRegister
 import com.aladin.framepro.data.models.Register
-import com.aladin.framepro.databinding.ActivityMainBinding
+import com.aladin.framepro.databinding.ActivityRegisterBinding
 import com.aladin.framepro.viewmodels.RegisterViewModel
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private val binding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
+        ActivityRegisterBinding.inflate(layoutInflater)
     }
 
     private val registerViewModel by lazy {
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = ""
 
         with(binding){
-            registerRv.layoutManager = LinearLayoutManager(this@MainActivity)
+            registerRv.layoutManager = LinearLayoutManager(this@RegisterActivity)
             registerRv.adapter = adapter
 
             itemTouchHelper.attachToRecyclerView(registerRv)
