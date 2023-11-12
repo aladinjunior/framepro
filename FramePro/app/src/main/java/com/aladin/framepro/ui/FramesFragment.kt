@@ -45,19 +45,10 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         binding.framesRv.layoutManager = LinearLayoutManager(requireContext())
         binding.framesRv.adapter = adapter
         adapter.setList(list)
-        setLayerDrawable()
 
     }
 
-    private fun setLayerDrawable(){
-        val bgDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.pcorrer_4f)
-        val layerDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.img_background_shadows) as LayerDrawable
-        layerDrawable.setDrawableByLayerId(R.id.covered_movie_background, bgDrawable)
 
-
-
-
-    }
 
 
 }

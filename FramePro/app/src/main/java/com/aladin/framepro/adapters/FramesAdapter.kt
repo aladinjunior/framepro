@@ -41,9 +41,9 @@ class FramesAdapter : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
                 frameSubtitle.text = frame.subtitle
                 frameCover.setImageResource(frame.imgCover)
 
-                val bgDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.pcorrer_4f)
+                val imgDrawable = ContextCompat.getDrawable(itemView.context, frame.imgCover)
                 val layerDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.img_background_shadows) as LayerDrawable
-                layerDrawable.setDrawableByLayerId(R.id.covered_movie_background, bgDrawable)
+                layerDrawable.setDrawableByLayerId(R.id.covered_movie_background, imgDrawable)
 
                 frameCover.setImageDrawable(layerDrawable)
 

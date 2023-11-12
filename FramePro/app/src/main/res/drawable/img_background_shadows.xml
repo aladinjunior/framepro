@@ -4,8 +4,10 @@
         android:drawable="@drawable/pcorrer_2f"/>
     <item>
         <shape>
-            <gradient android:startColor="@color/black"
+            <gradient android:startColor="@color/black_shadows"
                 android:centerColor="@android:color/transparent"
+                android:centerX="0.5"
+                android:centerY="0.5"
                 android:endColor="@android:color/transparent"
                 android:angle="90"/>
         </shape>
