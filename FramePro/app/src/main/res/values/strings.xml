@@ -21,4 +21,7 @@
     <string name="pspin">Porta de Giro</string>
     <string name="pcorrer_4f">Porta de Correr 4 Folhas</string>
     <string name="pcorrer_3f">Porta de Correr 3 Folhas</string>
+    <string name="add_frame">Adicionar Esquadria</string>
+    <string name="width">Largura</string>
+    <string name="height">Altura</string>
 </resources>

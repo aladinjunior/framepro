@@ -17,7 +17,7 @@ import com.aladin.framepro.databinding.FragmentFramesBinding
 import com.aladin.framepro.databinding.FramesListItemBinding
 import com.aladin.framepro.extensions.buildFrames
 
-class FramesFragment : Fragment(R.layout.fragment_frames) {
+class FramesFragment() : Fragment(R.layout.fragment_frames) {
 
 
 
@@ -27,7 +27,9 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
 
     private val adapter by lazy {
-        FramesAdapter()
+        FramesAdapter { str ->
+            FrameSheet().show(requireActivity().supportFragmentManager, "frameTag")
+        }
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -39,7 +41,6 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list = buildFrames()
-
 
 
         binding.framesRv.layoutManager = LinearLayoutManager(requireContext())

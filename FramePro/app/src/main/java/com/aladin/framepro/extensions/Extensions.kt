@@ -1,18 +1,22 @@
 package com.aladin.framepro.extensions
 
+import android.graphics.drawable.LayerDrawable
 import android.view.View
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
+import com.aladin.framepro.adapters.FramesAdapter
 import com.aladin.framepro.data.models.Frame
 import com.aladin.framepro.data.models.RegisterEntity
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.ui.NewRegisterSheet
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-fun NewRegisterSheet.setSheetBackground(){
+fun BottomSheetDialogFragment.setSheetBackground(){
 
     dialog?.setOnShowListener {
         val dialog = it as? BottomSheetDialog
@@ -68,4 +72,13 @@ fun Fragment.buildFrames() : List<Frame> {
             Frame(R.drawable.guarda_corpo, getString(R.string.keep_body))
         )
 
+}
+
+fun FramesAdapter.FramesViewHolder.setShadowLayer(frame: Frame, frameCover: ImageView){
+
+    val imgDrawable = ContextCompat.getDrawable(itemView.context, frame.imgCover)
+    val layerDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.img_background_shadows) as LayerDrawable
+    layerDrawable.setDrawableByLayerId(R.id.covered_movie_background, imgDrawable)
+
+    frameCover.setImageDrawable(layerDrawable)
 }

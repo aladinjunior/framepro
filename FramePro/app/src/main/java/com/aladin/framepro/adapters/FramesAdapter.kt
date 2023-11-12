@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aladin.framepro.R
 import com.aladin.framepro.data.models.Frame
 import com.aladin.framepro.databinding.FramesListItemBinding
+import com.aladin.framepro.extensions.setShadowLayer
 
-class FramesAdapter : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
+class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
 
 
-    val listOfFrames: MutableList<Frame> = mutableListOf()
+    private val listOfFrames: MutableList<Frame> = mutableListOf()
 
 
     fun setList(newList: List<Frame>){
@@ -40,14 +41,12 @@ class FramesAdapter : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
                 frameTitle.text = frame.name
                 frameSubtitle.text = frame.subtitle
                 frameCover.setImageResource(frame.imgCover)
-
-                val imgDrawable = ContextCompat.getDrawable(itemView.context, frame.imgCover)
-                val layerDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.img_background_shadows) as LayerDrawable
-                layerDrawable.setDrawableByLayerId(R.id.covered_movie_background, imgDrawable)
-
-                frameCover.setImageDrawable(layerDrawable)
+                setShadowLayer(frame, frameCover)
 
 
+                itemView.setOnClickListener {
+                    onFrameClick(frame.name)
+                }
 
             }
         }

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.findNavController
 import com.aladin.framepro.R
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentNewRegisterSheetBinding
@@ -34,8 +33,7 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         setSheetBackground()
 
-        val activity = requireActivity()
-        registerViewModel = ViewModelProvider(activity)[RegisterViewModel::class.java]
+        registerViewModel = ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
         with(binding) {
             saveBttn.setOnClickListener {
                 saveOnDb()
@@ -65,6 +63,5 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
     private fun isNotEmptyData(name: String, address: String): Boolean {
         return name.isNotEmpty() && name.isNotBlank() && address.isNotEmpty() && address.isNotBlank()
     }
-
 
 }
