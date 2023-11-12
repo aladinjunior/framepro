@@ -28,7 +28,7 @@ class FramesFragment() : Fragment(R.layout.fragment_frames) {
 
     private val adapter by lazy {
         FramesAdapter { str ->
-            FrameSheet().show(requireActivity().supportFragmentManager, "frameTag")
+            FrameSheet(str, 1).show(requireActivity().supportFragmentManager, "frameTag")
         }
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

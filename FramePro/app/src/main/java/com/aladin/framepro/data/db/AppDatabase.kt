@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.aladin.framepro.data.db.daos.FrameDescriptionDao
 import com.aladin.framepro.data.db.daos.RegisterDao
+import com.aladin.framepro.data.models.FrameDescriptionEntity
 import com.aladin.framepro.data.models.RegisterEntity
 
-@Database(entities = [RegisterEntity::class], version = 1)
+@Database(entities = [RegisterEntity::class, FrameDescriptionEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
 
