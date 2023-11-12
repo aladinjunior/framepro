@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.aladin.framepro.data.db.daos.FrameDescriptionDao
 import com.aladin.framepro.data.db.daos.RegisterDao
 import com.aladin.framepro.data.models.RegisterEntity
 
@@ -12,6 +13,7 @@ abstract class AppDatabase : RoomDatabase() {
 
 
     abstract fun registerDao(): RegisterDao
+    abstract fun frameDescriptionDao(): FrameDescriptionDao
     companion object {
 
         @Volatile

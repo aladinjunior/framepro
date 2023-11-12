@@ -10,6 +10,8 @@ import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
 import com.aladin.framepro.adapters.FramesAdapter
 import com.aladin.framepro.data.models.Frame
+import com.aladin.framepro.data.models.FrameDescription
+import com.aladin.framepro.data.models.FrameDescriptionEntity
 import com.aladin.framepro.data.models.RegisterEntity
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.ui.NewRegisterSheet
@@ -58,7 +60,6 @@ fun <T, U> LiveData<T>.map(transform: (T) -> U): LiveData<U> {
 
 fun Fragment.buildFrames() : List<Frame> {
     return listOf(
-
             Frame(R.drawable.pcorrer_2f, getString(R.string.pcorrer_2f)),
             Frame(R.drawable.pcorrer_3f, getString(R.string.pcorrer_3f)),
             Frame(R.drawable.pcorrer_4f, getString(R.string.pcorrer_4f)),
@@ -81,4 +82,16 @@ fun FramesAdapter.FramesViewHolder.setShadowLayer(frame: Frame, frameCover: Imag
     layerDrawable.setDrawableByLayerId(R.id.covered_movie_background, imgDrawable)
 
     frameCover.setImageDrawable(layerDrawable)
+}
+
+fun FrameDescription.toFrameDescriptionEntity() : FrameDescriptionEntity {
+    return with(this){
+        FrameDescriptionEntity(
+            registerId = registerId,
+            name = name,
+            width = width,
+            height = height,
+            description = description
+        )
+    }
 }
