@@ -2,14 +2,9 @@ package com.aladin.framepro.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.aladin.framepro.adapters.RegistersAdapter
-import com.aladin.framepro.adapters.SwipeRegister
-import com.aladin.framepro.data.models.Register
+import android.view.Menu
+import com.aladin.framepro.R
 import com.aladin.framepro.databinding.ActivityRegisterBinding
-import com.aladin.framepro.viewmodels.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -25,9 +20,15 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.title = ""
 
 
+
+
     }
 
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
 
 
 
