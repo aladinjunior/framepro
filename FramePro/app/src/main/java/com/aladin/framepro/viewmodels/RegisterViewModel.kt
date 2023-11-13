@@ -9,15 +9,10 @@ import com.aladin.framepro.data.db.AppDatabase
 import com.aladin.framepro.data.repositories.RegisterDbDataSource
 import com.aladin.framepro.data.repositories.RegisterRepository
 import com.aladin.framepro.data.models.Register
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
+
 
 class RegisterViewModel(
     application: Application
@@ -26,7 +21,6 @@ class RegisterViewModel(
     val name = MutableLiveData<String>()
     val address = MutableLiveData<String>()
     val id = MutableLiveData<Long>()
-
 
 
 
@@ -52,6 +46,7 @@ class RegisterViewModel(
             _registerId.postValue(id)
         }
     }
+
     fun delete(register: Register) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
             registerRepository.deleteRegister(register)

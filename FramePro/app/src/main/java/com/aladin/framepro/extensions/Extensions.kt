@@ -3,6 +3,7 @@ package com.aladin.framepro.extensions
 import android.graphics.drawable.LayerDrawable
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -94,4 +95,12 @@ fun FrameDescription.toFrameDescriptionEntity() : FrameDescriptionEntity {
             description = description
         )
     }
+}
+
+fun Fragment.showToast(message: String){
+    Toast.makeText(
+        requireContext(),
+        message,
+        Toast.LENGTH_SHORT
+    ).show()
 }

@@ -57,9 +57,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             itemTouchHelper.attachToRecyclerView(registerRv)
         }
 
-
-
-
         binding.newRegisterBttn.setOnClickListener {
             NewRegisterSheet().show(requireActivity().supportFragmentManager, "newRegisterTag")
         }

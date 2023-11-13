@@ -22,10 +22,9 @@ import com.aladin.framepro.extensions.buildFrames
 class FramesFragment : Fragment(R.layout.fragment_frames) {
 
 
-
     private lateinit var binding: FragmentFramesBinding
 
-    val args: FramesFragmentArgs by navArgs()
+    private val args: FramesFragmentArgs by navArgs()
 
 
     private val adapter by lazy {
@@ -53,7 +52,6 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         binding.previousAddress.text = args.address
 
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.toolbar_menu, menu)
