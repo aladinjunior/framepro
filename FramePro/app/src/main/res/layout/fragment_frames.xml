@@ -42,6 +42,7 @@
             />
 
         <TextView
+            android:id="@+id/previous_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="hello world"
@@ -50,6 +51,7 @@
             android:layout_marginTop="3dp"/>
 
         <TextView
+            android:id="@+id/previous_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="hello world 2 "

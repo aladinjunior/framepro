@@ -15,7 +15,7 @@ import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentRegisterBinding
 import com.aladin.framepro.viewmodels.RegisterViewModel
 
-class RegisterFragment() : Fragment(R.layout.fragment_register) {
+class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
 
