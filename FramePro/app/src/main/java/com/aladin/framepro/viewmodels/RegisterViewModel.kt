@@ -1,7 +1,6 @@
 package com.aladin.framepro.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,9 +9,15 @@ import com.aladin.framepro.data.db.AppDatabase
 import com.aladin.framepro.data.repositories.RegisterDbDataSource
 import com.aladin.framepro.data.repositories.RegisterRepository
 import com.aladin.framepro.data.models.Register
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class RegisterViewModel(
     application: Application
@@ -28,6 +33,7 @@ class RegisterViewModel(
     private val registerRepository: RegisterRepository
     val allRegisters: LiveData<List<Register>>
 
+
     init {
         val dao = AppDatabase.getDatabase(application).registerDao()
         registerRepository = RegisterDbDataSource(dao)
@@ -35,24 +41,23 @@ class RegisterViewModel(
     }
 
 
-    fun register(register: Register): Job {
+
+    private val _registerId = MutableLiveData<Long>()
+    val registerId: LiveData<Long> get() = _registerId
+
+
+    fun register(register: Register) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
-            registerRepository.createRegister(register)
-
+            val id = registerRepository.createRegister(register)
+            _registerId.postValue(id)
         }
-
     }
-
     fun delete(register: Register) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
             registerRepository.deleteRegister(register)
         }
     }
 
-    fun getSelectedId(name: String, address: String) : Long {
-        return registerRepository.getSelectedId(name, address)
-
-    }
 
 
 }

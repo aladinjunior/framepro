@@ -8,11 +8,10 @@ interface RegisterRepository {
 
     val allRegisters : LiveData<List<Register>>
 
-    suspend fun createRegister(register: Register)
+    suspend fun createRegister(register: Register) : Long
 
     suspend fun deleteRegister(register: Register)
 
-    fun getSelectedId(name: String, address: String) : Long
 
 
 

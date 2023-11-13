@@ -19,6 +19,7 @@ import com.aladin.framepro.viewmodels.RegisterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class NewRegisterSheet : BottomSheetDialogFragment() {
@@ -28,7 +29,6 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
 
     private var name: String = ""
     private var address: String = ""
-    private var id: Long = 0
 
 
     override fun onCreateView(
@@ -50,12 +50,6 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
             saveBttn.setOnClickListener {
                 saveOnDb()
 
-                val action = RegisterFragmentDirections.actionRegisterToFrames(
-                    name = this@NewRegisterSheet.name,
-                    address = this@NewRegisterSheet.address,
-                    id = this@NewRegisterSheet.id
-                )
-                findNavController().navigate(action)
 
             }
         }
@@ -66,28 +60,36 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
     private fun saveOnDb() {
         name = binding.name.text.toString()
         address = binding.address.text.toString()
-        if (isNotEmptyData(name, address)){
-            registerViewModel.viewModelScope.launch(Dispatchers.IO) {
-                val register = Register(name = name, address = address)
-                registerViewModel.register(register)
-                this@NewRegisterSheet.id = registerViewModel.getSelectedId(name, address)
-                Log.i("idTest", id.toString())
 
 
 
+        if (isNotEmptyData(name, address)) {
 
-//                this@NewRegisterSheet.id = x.toString().toLong()
+            val register = Register(name = name, address = address)
+            registerViewModel.register(register)
 
+            registerViewModel.registerId.observe(viewLifecycleOwner) { registerId ->
+                val action = RegisterFragmentDirections.actionRegisterToFrames(
+                    name = register.name,
+                    address = register.address,
+                    id = registerId
+                )
+                findNavController().navigate(action)
+                dismiss()
 
-
+                dismiss()
             }
-            dismiss()
+
         } else {
             dismiss()
-            Toast.makeText(requireContext(), getString(R.string.fields_cant_be_null), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.fields_cant_be_null),
+                Toast.LENGTH_SHORT
+            ).show()
         }
-
     }
+
 
     private fun isNotEmptyData(name: String, address: String): Boolean {
         return name.isNotEmpty() && name.isNotBlank() && address.isNotEmpty() && address.isNotBlank()

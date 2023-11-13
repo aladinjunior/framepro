@@ -19,9 +19,9 @@ class RegisterDbDataSource(
             }
         }
 
-    override suspend fun createRegister(register: Register) {
+    override suspend fun createRegister(register: Register) : Long {
         val registerEntity = register.toRegisterEntity()
-        registerDao.register(registerEntity)
+        return registerDao.register(registerEntity)
     }
 
     override suspend fun deleteRegister(register: Register) {
@@ -30,7 +30,5 @@ class RegisterDbDataSource(
 
     }
 
-    override fun getSelectedId(name: String, address: String): Long {
-        return registerDao.getSelectedId(name, address)
-    }
+
 }

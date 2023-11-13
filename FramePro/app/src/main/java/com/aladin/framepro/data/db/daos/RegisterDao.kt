@@ -12,14 +12,11 @@ import com.aladin.framepro.data.models.RegisterEntity
 @Dao
 interface RegisterDao{
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun register(registerEntity: RegisterEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun register(registerEntity: RegisterEntity) : Long
 
     @Query("SELECT * FROM register_table")
     fun getAllRegisters() : LiveData<List<RegisterEntity>>
-
-    @Query("SELECT id FROM register_table WHERE name = :name and address = :address")
-    fun getSelectedId(name: String, address: String) : Long
 
     @Delete
     fun delete(registerEntity: RegisterEntity)
