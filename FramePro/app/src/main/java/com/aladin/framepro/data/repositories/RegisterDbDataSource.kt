@@ -1,5 +1,6 @@
 package com.aladin.framepro.data.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.aladin.framepro.data.db.daos.RegisterDao
 import com.aladin.framepro.data.models.Register
@@ -27,5 +28,9 @@ class RegisterDbDataSource(
         val registerEntity = register.toRegisterEntity()
         registerDao.delete(registerEntity)
 
+    }
+
+    override fun getSelectedId(name: String, address: String): Long {
+        return registerDao.getSelectedId(name, address)
     }
 }

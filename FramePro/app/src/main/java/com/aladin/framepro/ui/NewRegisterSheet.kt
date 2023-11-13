@@ -1,6 +1,7 @@
 package com.aladin.framepro.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.aladin.framepro.R
 import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.data.models.RegisterEntity
 import com.aladin.framepro.databinding.FragmentNewRegisterSheetBinding
+import com.aladin.framepro.extensions.map
 import com.aladin.framepro.extensions.setSheetBackground
 import com.aladin.framepro.viewmodels.RegisterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -66,8 +69,15 @@ class NewRegisterSheet : BottomSheetDialogFragment() {
         if (isNotEmptyData(name, address)){
             registerViewModel.viewModelScope.launch(Dispatchers.IO) {
                 val register = Register(name = name, address = address)
-                this@NewRegisterSheet.id = register.id
                 registerViewModel.register(register)
+                this@NewRegisterSheet.id = registerViewModel.getSelectedId(name, address)
+                Log.i("idTest", id.toString())
+
+
+
+
+//                this@NewRegisterSheet.id = x.toString().toLong()
+
 
 
             }

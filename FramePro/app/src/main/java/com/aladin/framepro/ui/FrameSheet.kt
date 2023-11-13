@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.navArgs
 import com.aladin.framepro.R
 import com.aladin.framepro.data.models.FrameDescription
 import com.aladin.framepro.data.models.Register
@@ -23,6 +24,7 @@ class FrameSheet(private val name: String, private val registerId: Long) :
     BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFrameSheetBinding
+
 
     private val frameDescViewModel by lazy {
         ViewModelProvider(requireActivity())[FrameDescriptionViewModel::class.java]

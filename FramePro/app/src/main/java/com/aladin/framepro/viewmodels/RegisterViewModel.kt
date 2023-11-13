@@ -23,6 +23,8 @@ class RegisterViewModel(
     val id = MutableLiveData<Long>()
 
 
+
+
     private val registerRepository: RegisterRepository
     val allRegisters: LiveData<List<Register>>
 
@@ -45,6 +47,11 @@ class RegisterViewModel(
         return viewModelScope.launch(Dispatchers.IO) {
             registerRepository.deleteRegister(register)
         }
+    }
+
+    fun getSelectedId(name: String, address: String) : Long {
+        return registerRepository.getSelectedId(name, address)
+
     }
 
 

@@ -12,6 +12,8 @@ interface RegisterRepository {
 
     suspend fun deleteRegister(register: Register)
 
+    fun getSelectedId(name: String, address: String) : Long
+
 
 
 }
