@@ -5,14 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.aladin.framepro.data.repositories.DbImplementation
+import com.aladin.framepro.data.db.instructions.DbInstBase
+import com.aladin.framepro.data.db.instructions.DbInstDataSource
+import com.aladin.framepro.data.db.instructions.DbInstructionsImpl
 import com.aladin.framepro.databinding.FragmentFrameSheetBinding
 import com.aladin.framepro.extensions.setSheetBackground
 import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class FrameSheet(private val name: String, private val registerId: Long) :
+class FrameSheet(
+    private val name: String,
+    private val registerId: Long,
+    private val dbInstructions: DbInstBase = DbInstDataSource(
+        DbInstructionsImpl()
+    )
+) :
     BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFrameSheetBinding
@@ -38,7 +46,7 @@ class FrameSheet(private val name: String, private val registerId: Long) :
                 val width = width.text.toString().toDouble()
                 val height = height.text.toString().toDouble()
                 val description = description.text.toString()
-                DbImplementation().saveOnFrameDb(
+                dbInstructions.saveOnFrameDb(
                     this@FrameSheet,
                     frameDescViewModel,
                     name,
@@ -47,6 +55,7 @@ class FrameSheet(private val name: String, private val registerId: Long) :
                     height,
                     description
                 )
+
             }
 
         }
