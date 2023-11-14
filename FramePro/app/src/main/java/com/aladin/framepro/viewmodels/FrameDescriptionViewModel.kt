@@ -34,4 +34,10 @@ class FrameDescriptionViewModel(
         }
     }
 
+    fun getFrameDescription(registerId : Long) : Job {
+        return viewModelScope.launch(Dispatchers.IO) {
+            val frame = frameDescRepository.registerFrames(registerId)
+        }
+    }
+
 }

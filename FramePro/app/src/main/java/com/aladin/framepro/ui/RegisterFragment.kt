@@ -13,6 +13,7 @@ import com.aladin.framepro.adapters.RegistersAdapter
 import com.aladin.framepro.adapters.SwipeRegister
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentRegisterBinding
+import com.aladin.framepro.extensions.Navigation
 import com.aladin.framepro.viewmodels.RegisterViewModel
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -28,6 +29,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private val adapter by lazy {
         RegistersAdapter{ id ->
+            Navigation().goToResultScreen(this@RegisterFragment, id)
 
         }
     }

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/gray">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -11,8 +12,8 @@
         android:layout_height="50dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/pcorrer_2f"
+        android:scaleType="centerCrop"
+        android:src="@drawable/frame"
         app:shapeAppearanceOverlay="@style/RoundedSquare"
         app:strokeWidth="3dp" />
 
@@ -24,7 +25,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:layout_toEndOf="@id/image"
-        android:text="hello, world!"
+        tools:text="hello, world!"
         android:textSize="17sp"
         android:textStyle="bold" />
 
@@ -35,7 +36,7 @@
         android:layout_below="@id/name"
         android:layout_marginStart="12dp"
         android:layout_toEndOf="@id/image"
-        android:text="hello, world!" />
+        tools:text="hello, world!" />
 
     <TextView
         android:id="@+id/measures"

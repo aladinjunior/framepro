@@ -1,5 +1,6 @@
 package com.aladin.framepro.extensions
 
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.ui.RegisterFragmentDirections
@@ -17,5 +18,10 @@ class Navigation {
             sheetRegister.findNavController().navigate(action)
 
         }
+    }
+
+    fun goToResultScreen(fragment: Fragment, registerId: Long){
+        val action = RegisterFragmentDirections.actionRegisterToResults(registerId)
+        fragment.findNavController().navigate(action)
     }
 }
