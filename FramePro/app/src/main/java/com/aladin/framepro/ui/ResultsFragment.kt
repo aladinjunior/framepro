@@ -10,7 +10,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aladin.framepro.adapters.ResultsAdapter
 import com.aladin.framepro.databinding.FragmentResultsBinding
-import com.aladin.framepro.extensions.buildFrames
 import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
 
 class ResultsFragment : Fragment() {
@@ -38,12 +37,17 @@ class ResultsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = args.registerId
 
-        frameDescViewModel.getFrameDescription(id)
         binding.resultsRv.layoutManager = LinearLayoutManager(requireContext())
         binding.resultsRv.adapter = adapter
-        adapter.setList()
+
+        frameDescViewModel.getFrameDescription(args.registerId)
+
+        frameDescViewModel.listOfFrames.observe(viewLifecycleOwner) {
+            adapter.setList(it)
+        }
+
+
     }
 
 }

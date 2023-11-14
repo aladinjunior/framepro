@@ -3,19 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/gray">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/frame"
-        app:shapeAppearanceOverlay="@style/RoundedSquare"
-        app:strokeWidth="3dp" />
 
 
     <TextView
@@ -24,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:layout_toEndOf="@id/image"
         tools:text="hello, world!"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -35,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
         android:layout_marginStart="12dp"
-        android:layout_toEndOf="@id/image"
         tools:text="hello, world!" />
 
     <TextView
@@ -44,7 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/description"
         android:layout_marginStart="12dp"
-        android:layout_toEndOf="@id/image"
         android:textStyle="italic"
         android:text="@string/measures_result" />
 

@@ -14,5 +14,5 @@ interface FrameDescriptionDao {
     fun insert(frameDescriptionEntity: FrameDescriptionEntity)
 
     @Query("SELECT * FROM frame_description_table WHERE registerId = :registerId")
-    fun getRegisterFrame(registerId: Long) : FrameDescriptionEntity
+    fun getRegisterFrame(registerId: Long) : List<FrameDescriptionEntity>
 }

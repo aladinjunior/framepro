@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.aladin.framepro.R
 import com.aladin.framepro.data.models.FrameDescription
 import com.aladin.framepro.databinding.ResultFramesListItemBinding
 
@@ -34,7 +35,11 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ResultsViewHolder>() 
 
     inner class ResultsViewHolder(private val binding: ResultFramesListItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(frameDescription: FrameDescription){
-
+            with(binding){
+                name.text = frameDescription.name
+                description.text = frameDescription.description
+                measures.text = itemView.context.getString(R.string.measures_result, frameDescription.width, frameDescription.height)
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package com.aladin.framepro.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aladin.framepro.data.db.AppDatabase
@@ -23,6 +24,9 @@ class FrameDescriptionViewModel(
 
     private val frameDescRepository: FrameDescriptionRepository
 
+    private val _listOfFrames = MutableLiveData<List<FrameDescription>>()
+    val listOfFrames: LiveData<List<FrameDescription>> get() = _listOfFrames
+
     init {
         val dao = AppDatabase.getDatabase(application).frameDescriptionDao()
         frameDescRepository = FrameDescriptionDbDataSource(dao)
@@ -36,7 +40,8 @@ class FrameDescriptionViewModel(
 
     fun getFrameDescription(registerId : Long) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
-            val frame = frameDescRepository.registerFrames(registerId)
+            val list = frameDescRepository.registerFrames(registerId)
+            _listOfFrames.postValue(list)
         }
     }
 

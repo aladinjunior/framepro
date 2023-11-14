@@ -12,7 +12,7 @@ class FrameDescriptionDbDataSource(private val frameDao: FrameDescriptionDao) : 
         frameDao.insert(frameDescriptionEntity)
     }
 
-    override suspend fun registerFrames(registerId: Long) : FrameDescription {
+    override suspend fun registerFrames(registerId: Long) : List<FrameDescription> {
         return frameDao.getRegisterFrame(registerId).toFrameDescription()
     }
 

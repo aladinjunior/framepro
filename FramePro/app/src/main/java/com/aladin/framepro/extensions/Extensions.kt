@@ -15,7 +15,6 @@ import com.aladin.framepro.data.models.FrameDescription
 import com.aladin.framepro.data.models.FrameDescriptionEntity
 import com.aladin.framepro.data.models.RegisterEntity
 import com.aladin.framepro.data.models.Register
-import com.aladin.framepro.ui.NewRegisterSheet
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -106,6 +105,15 @@ fun FrameDescriptionEntity.toFrameDescription() : FrameDescription {
             height = height,
             description = description
         )
+    }
+}
+
+fun List<FrameDescriptionEntity>.toFrameDescription() : List<FrameDescription> {
+    return with(this){
+       map {
+           it.toFrameDescription()
+       }
+
     }
 }
 
