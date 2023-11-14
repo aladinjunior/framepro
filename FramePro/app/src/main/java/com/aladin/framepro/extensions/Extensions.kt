@@ -97,6 +97,18 @@ fun FrameDescription.toFrameDescriptionEntity() : FrameDescriptionEntity {
     }
 }
 
+fun FrameDescriptionEntity.toFrameDescription() : FrameDescription {
+    return with(this){
+        FrameDescription(
+            registerId = registerId,
+            name = name,
+            width = width,
+            height = height,
+            description = description
+        )
+    }
+}
+
 fun Fragment.showToast(message: String){
     Toast.makeText(
         requireContext(),

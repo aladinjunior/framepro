@@ -27,7 +27,9 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private val adapter by lazy {
-        RegistersAdapter()
+        RegistersAdapter{ id ->
+
+        }
     }
 
     private val itemTouchHelper by lazy {

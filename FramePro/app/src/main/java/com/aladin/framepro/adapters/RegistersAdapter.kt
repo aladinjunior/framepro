@@ -1,17 +1,19 @@
 package com.aladin.framepro.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.RegistersListItemBinding
 
-class RegistersAdapter : RecyclerView.Adapter<RegistersAdapter.RegistersViewHolder>(){
+class RegistersAdapter(private val onRegisterClick: (id: Long) -> Unit) : RecyclerView.Adapter<RegistersAdapter.RegistersViewHolder>(){
 
 
     val listOfRegisters: MutableList<Register> = mutableListOf()
 
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(newList: List<Register>){
         listOfRegisters.clear()
         listOfRegisters.addAll(newList)
@@ -47,6 +49,10 @@ class RegistersAdapter : RecyclerView.Adapter<RegistersAdapter.RegistersViewHold
                 name.text = register.name
                 address.text = register.address
             }
+            itemView.setOnClickListener {
+                onRegisterClick.invoke(register.id)
+            }
+
         }
     }
 
