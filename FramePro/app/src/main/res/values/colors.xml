@@ -12,4 +12,6 @@
     <color name="gray_view">#f4f1fc</color>
     <color name="gray_text">#9c9ba0</color>
     <color name="gray_background">#ffffff</color>
+    <color name="purple_box">#7966af</color>
+    <color name="purple_button">#6750a4</color>
 </resources>

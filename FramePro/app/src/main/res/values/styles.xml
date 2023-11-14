@@ -14,4 +14,12 @@
         <item name="cornerSize">0dp</item>
     </style>
 
+    <style name="TextInputLayoutUniqueColorForThemes" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/purple_box</item>
+        <item name="hintTextColor">@color/purple_box</item>
+        <item name="android:textColorHint">@color/gray_text</item>
+
+    </style>
+
 </resources>

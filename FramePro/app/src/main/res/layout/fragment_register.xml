@@ -9,12 +9,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/new_register_bttn"
-        style="@style/Widget.AppCompat.Button"
+        style="@style/NoRoundedCornersButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="8dp"
+        android:backgroundTint="@color/purple_button"
+        android:textColor="@color/white"
         android:text="@string/new_register" />
 
 </RelativeLayout>
