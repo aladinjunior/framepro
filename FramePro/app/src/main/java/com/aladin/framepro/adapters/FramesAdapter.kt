@@ -1,14 +1,11 @@
 package com.aladin.framepro.adapters
 
-import android.graphics.drawable.LayerDrawable
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.aladin.framepro.R
 import com.aladin.framepro.data.models.Frame
 import com.aladin.framepro.databinding.FramesListItemBinding
-import com.aladin.framepro.extensions.setShadowLayer
 
 class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
 
@@ -16,6 +13,7 @@ class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : Recycler
     private val listOfFrames: MutableList<Frame> = mutableListOf()
 
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(newList: List<Frame>){
         listOfFrames.clear()
         listOfFrames.addAll(newList)
@@ -41,11 +39,9 @@ class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : Recycler
                 frameTitle.text = frame.name
                 frameSubtitle.text = frame.subtitle
                 frameCover.setImageResource(frame.imgCover)
-                setShadowLayer(frame, frameCover)
-
 
                 itemView.setOnClickListener {
-                    onFrameClick(frame.name)
+                    onFrameClick.invoke(frame.name)
                 }
 
             }

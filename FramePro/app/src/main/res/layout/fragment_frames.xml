@@ -12,25 +12,14 @@
         android:background="@color/purple_background"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+        android:layout_height="100dp"/>
 
-    <SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/search_view_background"
-        app:queryHint="@string/type_frame_name"
 
-        />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_view">
+        android:layout_marginTop="20dp">
 
 
         <View

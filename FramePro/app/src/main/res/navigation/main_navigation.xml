@@ -11,11 +11,13 @@
         tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_register_to_frames"
-            app:destination="@id/frames" />
+            app:destination="@id/frames"
+            app:enterAnim="@anim/nav_default_enter_anim" />
 
         <action
             android:id="@+id/action_register_to_results"
-            app:destination="@id/results" />
+            app:destination="@id/results"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
 
     <fragment

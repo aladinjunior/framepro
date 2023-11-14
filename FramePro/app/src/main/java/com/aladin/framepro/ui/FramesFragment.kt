@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.aladin.framepro.R
 import com.aladin.framepro.adapters.FramesAdapter
 import com.aladin.framepro.databinding.FragmentFramesBinding
@@ -44,7 +44,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         super.onViewCreated(view, savedInstanceState)
         val list = buildFrames()
 
-        binding.framesRv.layoutManager = LinearLayoutManager(requireContext())
+        binding.framesRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.framesRv.adapter = adapter
         adapter.setList(list)
 
@@ -61,6 +61,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.check -> {
+
                 findNavController().popBackStack()
                 true
             }
