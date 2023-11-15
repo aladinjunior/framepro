@@ -27,4 +27,6 @@
     <string name="saved_successfully">Salvo com sucesso.</string>
     <string name="check">Confirma</string>
     <string name="result">Resultado</string>
+    <string name="no_register_created">Nenhum registro criado.</string>
+    <string name="no_register_on_db">Nenhum registro no banco de dados.</string>
 </resources>

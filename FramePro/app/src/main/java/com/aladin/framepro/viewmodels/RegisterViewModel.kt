@@ -40,6 +40,8 @@ class RegisterViewModel(
     val registerId: LiveData<Long> get() = _registerId
 
 
+
+
     fun register(register: Register) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
             val id = registerRepository.createRegister(register)

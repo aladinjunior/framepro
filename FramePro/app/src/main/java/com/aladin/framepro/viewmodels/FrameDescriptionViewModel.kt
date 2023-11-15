@@ -27,6 +27,8 @@ class FrameDescriptionViewModel(
     private val _listOfFrames = MutableLiveData<List<FrameDescription>>()
     val listOfFrames: LiveData<List<FrameDescription>> get() = _listOfFrames
 
+
+
     init {
         val dao = AppDatabase.getDatabase(application).frameDescriptionDao()
         frameDescRepository = FrameDescriptionDbDataSource(dao)

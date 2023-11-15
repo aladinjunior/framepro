@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aladin.framepro.R
@@ -14,6 +15,7 @@ import com.aladin.framepro.adapters.SwipeRegister
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentRegisterBinding
 import com.aladin.framepro.extensions.Navigation
+import com.aladin.framepro.extensions.showToast
 import com.aladin.framepro.viewmodels.RegisterViewModel
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -54,10 +56,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showToast(findNavController().currentDestination.toString())
+
         with(binding){
             registerRv.layoutManager = LinearLayoutManager(requireActivity())
             registerRv.adapter = adapter
-
             itemTouchHelper.attachToRecyclerView(registerRv)
         }
 
@@ -66,15 +69,29 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         }
 
         createRegisterView()
+
+
     }
 
     override fun onResume() {
         super.onResume()
 
+
         registerViewModel.allRegisters.observe(this) {
             it?.let{
                 adapter.setList(it)
+                onEmptyList(it)
             }
+        }
+    }
+
+    private fun onEmptyList(list: List<Register>){
+        if(list.isEmpty()){
+            binding.emptyImage.visibility = View.VISIBLE
+            binding.noRegisterText.visibility = View.VISIBLE
+        } else {
+            binding.emptyImage.visibility = View.GONE
+            binding.noRegisterText.visibility = View.GONE
         }
     }
 

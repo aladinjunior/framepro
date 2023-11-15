@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.aladin.framepro.data.db.instructions.DbInstBase
 import com.aladin.framepro.data.db.instructions.DbInstDataSource
 import com.aladin.framepro.data.db.instructions.DbInstructionsImpl
@@ -48,6 +49,19 @@ class NewRegisterSheet(private val dbInstructions: DbInstBase = DbInstDataSource
                 Navigation().goToFrameScreen(this@NewRegisterSheet, registerViewModel, register)
 
 
+//                registerViewModel.registerId.observe(viewLifecycleOwner) { registerId ->
+//                    val action = RegisterFragmentDirections.actionRegisterToFrames(
+//                        name = register.name,
+//                        address = register.address,
+//                        id = registerId
+//                    )
+//                    findNavController().navigate(action)
+//                val action = RegisterFragmentDirections.actionRegisterToFrames(
+//                    name = this@NewRegisterSheet.name,
+//                    address = this@NewRegisterSheet.address,
+//                    id = this@NewRegisterSheet.id.toLong()
+//                )
+//                findNavController().navigate(action)
             }
         }
 

@@ -17,13 +17,24 @@
         <action
             android:id="@+id/action_register_to_results"
             app:destination="@id/results"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+
+    <fragment android:id="@+id/register_sheet"
+        android:name="com.aladin.framepro.ui.NewRegisterSheet">
+        <action android:id="@+id/action_register_sheet_to_frames"
+            app:destination="@id/frames"
+            app:enterAnim="@anim/nav_default_enter_anim"/>
     </fragment>
 
     <fragment
         android:id="@+id/frames"
         android:name="com.aladin.framepro.ui.FramesFragment"
         tools:layout="@layout/fragment_frames">
+        <action
+            android:id="@+id/action_frames_to_register"
+            app:destination="@id/register"
+            app:enterAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="name"
             app:argType="string" />
