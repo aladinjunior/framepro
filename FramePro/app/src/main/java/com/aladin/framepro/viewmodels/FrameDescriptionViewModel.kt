@@ -27,6 +27,9 @@ class FrameDescriptionViewModel(
     private val _listOfFrames = MutableLiveData<List<FrameDescription>>()
     val listOfFrames: LiveData<List<FrameDescription>> get() = _listOfFrames
 
+    private val _savedOnDb = MutableLiveData<Boolean>()
+
+    val savedOnDb: LiveData<Boolean> get() = _savedOnDb
 
 
     init {
@@ -45,6 +48,11 @@ class FrameDescriptionViewModel(
             val list = frameDescRepository.registerFrames(registerId)
             _listOfFrames.postValue(list)
         }
+    }
+
+    fun saved(boolean: Boolean) : Boolean{
+        _savedOnDb.postValue(boolean)
+        return boolean
     }
 
 }

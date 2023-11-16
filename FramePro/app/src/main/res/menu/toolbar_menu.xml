@@ -5,6 +5,6 @@
     <item android:id="@+id/check"
         android:title="@string/check"
         android:icon="@drawable/check"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 
 </menu>

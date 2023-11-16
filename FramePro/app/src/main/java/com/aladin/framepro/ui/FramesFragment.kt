@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aladin.framepro.R
@@ -19,7 +18,6 @@ import com.aladin.framepro.adapters.FramesAdapter
 import com.aladin.framepro.databinding.FragmentFramesBinding
 import com.aladin.framepro.extensions.Navigation
 import com.aladin.framepro.extensions.buildFrames
-import com.aladin.framepro.extensions.showToast
 import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
 
 @Suppress("DEPRECATION")
@@ -28,9 +26,13 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private lateinit var binding: FragmentFramesBinding
 
+    private lateinit var menuItem: MenuItem
+
     private val navigation =  Navigation()
 
     private val args: FramesFragmentArgs by navArgs()
+
+    private lateinit var frameSheet: FrameSheet
 
     private val frameDescViewModel by lazy {
         ViewModelProvider(requireActivity())[FrameDescriptionViewModel::class.java]
@@ -38,7 +40,8 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private val adapter by lazy {
         FramesAdapter { str ->
-            FrameSheet(str, args.id).show(requireActivity().supportFragmentManager, "frameTag")
+            frameSheet = FrameSheet(str, args.id)
+            frameSheet.show(requireActivity().supportFragmentManager, "frameTag")
         }
     }
 
@@ -53,7 +56,6 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         super.onViewCreated(view, savedInstanceState)
         val list = buildFrames()
 
-        showToast(findNavController().currentDestination?.id.toString())
 
         binding.framesRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.framesRv.adapter = adapter
@@ -66,13 +68,23 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.toolbar_menu, menu)
+        menuItem = menu.findItem(R.id.check)
+        menuItem.isVisible = false
+        frameDescViewModel.savedOnDb.observe(viewLifecycleOwner){boolean ->
+            if(boolean) menuItem.isVisible = true
+        }
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.check -> {
+
                 navigation.goToRegisterScreen(this@FramesFragment)
+
                 true
             }
 

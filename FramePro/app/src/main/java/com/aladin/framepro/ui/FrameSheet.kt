@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.aladin.framepro.R
 import com.aladin.framepro.data.db.instructions.DbInstBase
 import com.aladin.framepro.data.db.instructions.DbInstDataSource
 import com.aladin.framepro.data.db.instructions.DbInstructionsImpl
 import com.aladin.framepro.databinding.FragmentFrameSheetBinding
 import com.aladin.framepro.extensions.setSheetBackground
+import com.aladin.framepro.extensions.showToast
 import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -24,7 +26,6 @@ class FrameSheet(
     BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFrameSheetBinding
-
 
     private val frameDescViewModel by lazy {
         ViewModelProvider(requireActivity())[FrameDescriptionViewModel::class.java]
@@ -41,21 +42,24 @@ class FrameSheet(
         super.onViewCreated(view, savedInstanceState)
         setSheetBackground()
 
+        frameDescViewModel.saved(false)
         binding.saveBttn.setOnClickListener {
             with(binding) {
-                val width = width.text.toString().toDouble()
-                val height = height.text.toString().toDouble()
-                val description = description.text.toString()
-                dbInstructions.saveOnFrameDb(
-                    this@FrameSheet,
-                    frameDescViewModel,
-                    name,
-                    registerId,
-                    width,
-                    height,
-                    description
-                )
-
+                if (width.text?.isNotEmpty() == true && height.text?.isNotEmpty() == true) {
+                    dbInstructions.saveOnFrameDb(
+                        this@FrameSheet,
+                        frameDescViewModel,
+                        name,
+                        registerId,
+                        width.text.toString().toDouble(),
+                        height.text.toString().toDouble(),
+                        description.text.toString()
+                    )
+                    frameDescViewModel.saved(true)
+                } else {
+                    dismiss()
+                    showToast(getString(R.string.fields_cant_be_null))
+                }
 
             }
 

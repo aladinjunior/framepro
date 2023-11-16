@@ -33,7 +33,7 @@ class DbInstructionsImpl {
 
     fun saveOnFrameDb(sheetFragment: BottomSheetDialogFragment, frameDescViewModel: FrameDescriptionViewModel, name: String, registerId: Long, width: Double, height: Double, description: String) {
 
-        if(Validations().isNotEmptyData(width, height, description)){
+        if(Validations().isNotEmptyFrameData(width, height, description)){
             frameDescViewModel.viewModelScope.launch(Dispatchers.IO) {
                 val frameDesc = FrameDescription(
                     registerId = registerId,

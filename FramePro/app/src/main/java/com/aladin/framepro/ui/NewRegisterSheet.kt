@@ -49,19 +49,6 @@ class NewRegisterSheet(private val dbInstructions: DbInstBase = DbInstDataSource
                 Navigation().goToFrameScreen(this@NewRegisterSheet, registerViewModel, register)
 
 
-//                registerViewModel.registerId.observe(viewLifecycleOwner) { registerId ->
-//                    val action = RegisterFragmentDirections.actionRegisterToFrames(
-//                        name = register.name,
-//                        address = register.address,
-//                        id = registerId
-//                    )
-//                    findNavController().navigate(action)
-//                val action = RegisterFragmentDirections.actionRegisterToFrames(
-//                    name = this@NewRegisterSheet.name,
-//                    address = this@NewRegisterSheet.address,
-//                    id = this@NewRegisterSheet.id.toLong()
-//                )
-//                findNavController().navigate(action)
             }
         }
 

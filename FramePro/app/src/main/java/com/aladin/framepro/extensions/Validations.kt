@@ -6,8 +6,9 @@ class Validations {
         return name.isNotEmpty() && name.isNotBlank() && address.isNotEmpty() && address.isNotBlank()
     }
 
-    fun isNotEmptyData(width: Double, height: Double, description: String): Boolean {
-        return width.toString().isNotEmpty() && height.toString()
-            .isNotBlank() && description.isNotEmpty()
+    fun isNotEmptyFrameData(width: Double, height: Double, description: String): Boolean {
+        return width.toString().isNotEmpty() && width.toString().isNotBlank() && height.toString()
+            .isNotBlank() && height.toString().isNotEmpty() &&
+        description.isNotBlank() && description.isNotEmpty()
     }
 }
