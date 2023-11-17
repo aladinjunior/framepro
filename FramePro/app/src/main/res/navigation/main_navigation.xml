@@ -55,5 +55,10 @@
             app:argType="long" />
     </fragment>
 
+    <fragment
+        android:id="@+id/edit_register"
+        android:name="com.aladin.framepro.ui.EditRegisterFragment"
+        tools:layout="@layout/fragment_edit_register"/>
+
 
 </navigation>
