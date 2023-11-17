@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class RegisterEntity(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     val name: String,
-    val address: String
+    val address: String,
+    val frames: List<FrameDescription>
 )

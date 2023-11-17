@@ -1,5 +1,6 @@
 package com.aladin.framepro.data.db.instructions
 
+import com.aladin.framepro.data.models.FrameDescription
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
 import com.aladin.framepro.viewmodels.RegisterViewModel
@@ -11,7 +12,8 @@ interface DbInstBase {
         sheetFragment: BottomSheetDialogFragment,
         registerViewModel: RegisterViewModel,
         name: String,
-        address: String
+        address: String,
+        frames: List<FrameDescription>
     ): Register
 
     fun saveOnFrameDb(

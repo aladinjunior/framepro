@@ -35,15 +35,10 @@
             android:id="@+id/action_frames_to_register"
             app:destination="@id/register"
             app:enterAnim="@anim/nav_default_exit_anim" />
+
         <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="id"
-            app:argType="long" />
-        <argument
-            android:name="address"
-            app:argType="string" />
+            android:name="register"
+            app:argType="com.aladin.framepro.data.models.Register"/>
     </fragment>
 
     <fragment
@@ -51,8 +46,8 @@
         android:name="com.aladin.framepro.ui.ResultsFragment"
         tools:layout="@layout/fragment_results">
         <argument
-            android:name="registerId"
-            app:argType="long" />
+            android:name="register"
+            app:argType="com.aladin.framepro.data.models.Register" />
     </fragment>
 
     <fragment

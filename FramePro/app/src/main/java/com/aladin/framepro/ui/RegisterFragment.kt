@@ -28,8 +28,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private val adapter by lazy {
-        RegistersAdapter{ id ->
-            Navigation().goToResultScreen(this@RegisterFragment, id)
+        RegistersAdapter{ register ->
+            Navigation().goToResultScreen(this@RegisterFragment, register)
 
         }
     }

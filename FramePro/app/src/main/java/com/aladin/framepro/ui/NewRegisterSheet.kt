@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.aladin.framepro.data.db.instructions.DbInstBase
 import com.aladin.framepro.data.db.instructions.DbInstDataSource
 import com.aladin.framepro.data.db.instructions.DbInstructionsImpl
+import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentNewRegisterSheetBinding
 import com.aladin.framepro.extensions.Navigation
 import com.aladin.framepro.extensions.setSheetBackground
@@ -40,12 +41,13 @@ class NewRegisterSheet(private val dbInstructions: DbInstBase = DbInstDataSource
                 this@NewRegisterSheet.name = binding.name.text.toString()
                 this@NewRegisterSheet.address = binding.address.text.toString()
 
-                val register = dbInstructions.saveOnRegisterDb(
-                    this@NewRegisterSheet,
-                    registerViewModel,
-                    this@NewRegisterSheet.name,
-                    this@NewRegisterSheet.address
-                )
+                val register = Register(name = this@NewRegisterSheet.name, address = this@NewRegisterSheet.address)
+//                val register = dbInstructions.saveOnRegisterDb(
+//                    this@NewRegisterSheet,
+//                    registerViewModel,
+//                    this@NewRegisterSheet.name,
+//                    this@NewRegisterSheet.address
+//                )
                 Navigation().goToFrameScreen(this@NewRegisterSheet, registerViewModel, register)
 
 

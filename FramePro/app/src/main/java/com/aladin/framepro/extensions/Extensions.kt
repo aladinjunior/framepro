@@ -35,7 +35,8 @@ fun Register.toRegisterEntity() : RegisterEntity {
         RegisterEntity(
             id = id,
             name = name,
-            address = address
+            address = address,
+            frames = frames
         )
     }
 }

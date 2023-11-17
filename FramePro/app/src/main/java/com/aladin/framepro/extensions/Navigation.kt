@@ -13,21 +13,21 @@ import kotlinx.coroutines.launch
 
 class Navigation {
      fun goToFrameScreen(fragment: NewRegisterSheet, registerViewModel: RegisterViewModel, register: Register) {
-         val observer = Observer<Long> { registerId ->
-             val action = RegisterFragmentDirections.actionRegisterToFrames(
-                 name = register.name,
-                 address = register.address,
-                 id = registerId
-             )
-
-             fragment.viewLifecycleOwner.lifecycleScope.launch {
-                 fragment.findNavController().navigate(action)
-             }
-
-             registerViewModel.registerId.removeObservers(fragment.viewLifecycleOwner)
-         }
-
-         registerViewModel.registerId.observe(fragment.viewLifecycleOwner, observer)
+//         val observer = Observer<Long> { registerId ->
+//             val action = RegisterFragmentDirections.actionRegisterToFrames(
+//                 register = register
+//             )
+//
+//             fragment.viewLifecycleOwner.lifecycleScope.launch {
+//                 fragment.findNavController().navigate(action)
+//             }
+//
+//             registerViewModel.registerId.removeObservers(fragment.viewLifecycleOwner)
+//         }
+//
+//         registerViewModel.registerId.observe(fragment.viewLifecycleOwner, observer)
+         val action = RegisterFragmentDirections.actionRegisterToFrames(register)
+         fragment.findNavController().navigate(action)
      }
 
 
@@ -35,8 +35,8 @@ class Navigation {
         fragment.findNavController().popBackStack()
     }
 
-    fun goToResultScreen(fragment: Fragment, registerId: Long){
-        val action = RegisterFragmentDirections.actionRegisterToResults(registerId)
+    fun goToResultScreen(fragment: Fragment, register: Register){
+        val action = RegisterFragmentDirections.actionRegisterToResults(register)
         fragment.findNavController().navigate(action)
     }
 }

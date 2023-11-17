@@ -8,7 +8,7 @@ import com.aladin.framepro.R
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.RegistersListItemBinding
 
-class RegistersAdapter(private val onRegisterClick: (id: Long) -> Unit) : RecyclerView.Adapter<RegistersAdapter.RegistersViewHolder>(){
+class RegistersAdapter(private val onRegisterClick: (register: Register) -> Unit) : RecyclerView.Adapter<RegistersAdapter.RegistersViewHolder>(){
 
 
     val listOfRegisters: MutableList<Register> = mutableListOf()
@@ -52,7 +52,7 @@ class RegistersAdapter(private val onRegisterClick: (id: Long) -> Unit) : Recycl
                 address.text = register.address
             }
             itemView.setOnClickListener {
-                onRegisterClick.invoke(register.id)
+                onRegisterClick.invoke(register)
             }
 
         }

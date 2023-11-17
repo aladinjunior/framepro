@@ -14,10 +14,10 @@ import kotlinx.coroutines.launch
 
 class DbInstructionsImpl {
 
-    fun saveOnRegisterDb(sheetFragment: BottomSheetDialogFragment, registerViewModel: RegisterViewModel, name: String, address: String) : Register {
+    fun saveOnRegisterDb(sheetFragment: BottomSheetDialogFragment, registerViewModel: RegisterViewModel, name: String, address: String, frames: List<FrameDescription>) : Register {
 
         return if (Validations().isNotEmptyData(name, address)) {
-            val register = Register(name = name, address = address)
+            val register = Register(name = name, address = address, frames = frames)
             registerViewModel.register(register)
             sheetFragment.dismiss()
             register

@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
 import com.aladin.framepro.data.db.daos.FrameDescriptionDao
 import com.aladin.framepro.data.db.daos.RegisterDao
 import com.aladin.framepro.data.models.FrameDescriptionEntity
 import com.aladin.framepro.data.models.RegisterEntity
+import com.aladin.framepro.extensions.Converters
 
 @Database(entities = [RegisterEntity::class, FrameDescriptionEntity::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
 
