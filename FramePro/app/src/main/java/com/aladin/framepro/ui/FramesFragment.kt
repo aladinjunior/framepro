@@ -84,7 +84,6 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
             R.id.check -> {
 
                 navigation.goToRegisterScreen(this@FramesFragment)
-
                 true
             }
 

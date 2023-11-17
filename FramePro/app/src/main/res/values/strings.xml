@@ -29,4 +29,8 @@
     <string name="result">Resultado</string>
     <string name="no_register_created">Nenhum registro criado.</string>
     <string name="no_register_on_db">Nenhum registro no banco de dados.</string>
+    <string name="default_option">Padrão</string>
+    <string name="edit_mode">Personalizável</string>
+    <string name="social">Social</string>
+    <string name="about">Sobre</string>
 </resources>
