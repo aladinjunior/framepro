@@ -28,7 +28,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private val adapter by lazy {
-        RegistersAdapter{ register ->
+        RegistersAdapter{  register ->
             Navigation().goToResultScreen(this@RegisterFragment, register)
 
         }
@@ -60,6 +60,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             registerRv.adapter = adapter
             itemTouchHelper.attachToRecyclerView(registerRv)
         }
+
+
 
         binding.newRegisterBttn.setOnClickListener {
             NewRegisterSheet().show(requireActivity().supportFragmentManager, "newRegisterTag")

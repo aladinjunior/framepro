@@ -60,7 +60,7 @@ class FrameDescriptionViewModel(
 
     fun getFrameDescription(register : Register) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
-            val list = frameDescRepository.getFramesOfRegister(register)
+            val list = frameDescRepository.registerFrames(register.id)
             _listOfFrames.postValue(list)
         }
     }

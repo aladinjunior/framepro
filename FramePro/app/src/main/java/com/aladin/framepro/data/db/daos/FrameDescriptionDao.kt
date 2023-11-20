@@ -14,8 +14,8 @@ interface FrameDescriptionDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(frameDescriptionEntity: FrameDescriptionEntity)
 
-    @Query("SELECT * FROM frame_description_table WHERE registerId = :registerId")
-    fun getRegisterFrame(registerId: Long) : List<FrameDescriptionEntity>
+    @Query("SELECT * FROM frame_description_table WHERE id = :id")
+    fun getRegisterFrame(id: Long) : List<FrameDescriptionEntity>
 
 //    @Query("SELECT frames FROM register_table WHERE id = :id")
 //    fun getFramesOfRegister(register: Register) : List<FrameDescriptionEntity>

@@ -1,6 +1,7 @@
 package com.aladin.framepro.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,13 +43,22 @@ class ResultsFragment : Fragment() {
         binding.resultsRv.layoutManager = LinearLayoutManager(requireContext())
         binding.resultsRv.adapter = adapter
 
-//        frameDescViewModel.getFrameDescription(args.register)
+//        frameDescViewModel.getFrameDescription(args.frames)
 
-        frameDescViewModel.listOfFrames.value?.let {
-            adapter.setList(it)
+        showToast(args.register.toString())
+
+
+
+//        frameDescViewModel.listOfFrames.value?.let {
+////            adapter.setList(it)
+////            showToast(it.toString())
+//        }
+        frameDescViewModel.listOfFrames.observe(viewLifecycleOwner){
+            showToast(it.toString())
         }
+//        Log.i("listOfFrames", args.register.frames.toString())
 
-        showToast(args.register.frames.toString())
+//        showToast(args.register.frames.toString())
 //        frameDescViewModel.listOfFrames.observe(viewLifecycleOwner) {
 //            args.register
 //            adapter.setList(it)

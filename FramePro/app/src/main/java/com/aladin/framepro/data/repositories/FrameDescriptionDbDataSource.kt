@@ -17,9 +17,9 @@ class FrameDescriptionDbDataSource(private val frameDao: FrameDescriptionDao) : 
         return frameDao.getRegisterFrame(registerId).toFrameDescription()
     }
 
-    override suspend fun getFramesOfRegister(register: Register): List<FrameDescription> {
-        TODO("Not yet implemented")
-    }
+//    override suspend fun getFramesOfRegister(registerId: Long): List<FrameDescription> {
+//       return frameDao.getRegisterFrame(registerId).toFrameDescription()
+//    }
 
     //    override suspend fun getFramesOfRegister(id: Long): List<FrameDescription> {
 //        return frameDao.getFramesOfRegister(id).toFrameDescription()

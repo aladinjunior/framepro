@@ -9,7 +9,7 @@ interface FrameDescriptionRepository {
 
     suspend fun insertFrameDescription(frameDescription: FrameDescription)
     suspend fun registerFrames(registerId: Long) : List<FrameDescription>
-    suspend fun getFramesOfRegister(register: Register) : List<FrameDescription>
+//    suspend fun getFramesOfRegister(registerId: Long) : List<FrameDescription>
 
 //    suspend fun getFramesOfRegister(id: Long) : List<FrameDescription>
 }
