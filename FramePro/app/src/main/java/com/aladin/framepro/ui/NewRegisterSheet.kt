@@ -5,10 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.aladin.framepro.data.db.instructions.DbInstBase
-import com.aladin.framepro.data.db.instructions.DbInstDataSource
-import com.aladin.framepro.data.db.instructions.DbInstructionsImpl
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentNewRegisterSheetBinding
 import com.aladin.framepro.extensions.Navigation
@@ -17,7 +13,7 @@ import com.aladin.framepro.viewmodels.RegisterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class NewRegisterSheet(private val dbInstructions: DbInstBase = DbInstDataSource(DbInstructionsImpl())) : BottomSheetDialogFragment() {
+class NewRegisterSheet : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentNewRegisterSheetBinding
     private lateinit var registerViewModel: RegisterViewModel
@@ -42,13 +38,10 @@ class NewRegisterSheet(private val dbInstructions: DbInstBase = DbInstDataSource
                 this@NewRegisterSheet.address = binding.address.text.toString()
 
                 val register = Register(name = this@NewRegisterSheet.name, address = this@NewRegisterSheet.address)
-//                val register = dbInstructions.saveOnRegisterDb(
-//                    this@NewRegisterSheet,
-//                    registerViewModel,
-//                    this@NewRegisterSheet.name,
-//                    this@NewRegisterSheet.address
-//                )
-                Navigation().goToFrameScreen(this@NewRegisterSheet, registerViewModel, register)
+
+                dismiss()
+
+                Navigation().goToFrameScreen(this@NewRegisterSheet, register)
 
 
             }

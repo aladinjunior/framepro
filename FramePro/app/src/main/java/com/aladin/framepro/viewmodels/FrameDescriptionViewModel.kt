@@ -60,24 +60,10 @@ class FrameDescriptionViewModel(
 
     fun getFrameDescription(register : Register) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
-//            val list = frameDescRepository.registerFrames(registerId)
             val list = frameDescRepository.getFramesOfRegister(register)
             _listOfFrames.postValue(list)
         }
     }
-
-    fun insertToRegister(register: Register) {
-        //QUANDO INSERIR UM FRAMEDESC NO DB, VAI INSERIR UM NA LISTA DE FRAMEDESC DO REGISTER
-    }
-
-//    fun getFramesOfRegister(id: Long, register: Register) : Job {
-//        return viewModelScope.launch(Dispatchers.IO) {
-//            val list = frameDescRepository.getFramesOfRegister(id)
-//            _listOfFrames.postValue(list)
-//
-//            register.frames = list
-//        }
-//    }
 
     fun saved(boolean: Boolean) : Boolean{
         _savedOnDb.postValue(boolean)

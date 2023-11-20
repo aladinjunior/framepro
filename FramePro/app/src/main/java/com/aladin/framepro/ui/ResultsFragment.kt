@@ -44,11 +44,15 @@ class ResultsFragment : Fragment() {
 
 //        frameDescViewModel.getFrameDescription(args.register)
 
-        showToast(args.register.name)
-        frameDescViewModel.listOfFrames.observe(viewLifecycleOwner) {
-            args.register
+        frameDescViewModel.listOfFrames.value?.let {
             adapter.setList(it)
         }
+
+        showToast(args.register.frames.toString())
+//        frameDescViewModel.listOfFrames.observe(viewLifecycleOwner) {
+//            args.register
+//            adapter.setList(it)
+//        }
 
 
     }

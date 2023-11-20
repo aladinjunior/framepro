@@ -47,7 +47,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private val adapter by lazy {
         FramesAdapter { str ->
-            frameSheet = FrameSheet(str, args.register)
+            frameSheet = FrameSheet(str, args.register.frames.toMutableList())
             frameSheet.show(requireActivity().supportFragmentManager, "frameTag")
         }
     }
