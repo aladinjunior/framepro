@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/house"/>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/image"
         android:id="@+id/register_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:visibility="gone"
@@ -31,15 +45,22 @@
         android:textColor="@color/gray_text"
         />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/new_register_bttn"
-        style="@style/NoRoundedCornersButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="8dp"
-        android:backgroundTint="@color/purple_button"
-        android:textColor="@color/white"
-        android:text="@string/new_register" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/new_register_bttn"
+            style="@style/NoRoundedCornersButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="@color/purple_button"
+            android:textColor="@color/white"
+            android:text="@string/new_register" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+
+
+
+
+
+</ScrollView>

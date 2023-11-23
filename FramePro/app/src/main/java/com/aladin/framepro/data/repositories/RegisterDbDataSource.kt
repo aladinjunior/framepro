@@ -1,6 +1,5 @@
 package com.aladin.framepro.data.repositories
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.aladin.framepro.data.db.daos.RegisterDao
 import com.aladin.framepro.data.models.Register
