@@ -1,12 +1,8 @@
 package com.aladin.framepro.ui
 
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -19,7 +15,6 @@ import com.aladin.framepro.data.db.instructions.DbInstBase
 import com.aladin.framepro.data.db.instructions.DbInstDataSource
 import com.aladin.framepro.data.db.instructions.DbInstructionsImpl
 import com.aladin.framepro.databinding.FragmentFramesBinding
-import com.aladin.framepro.extensions.Navigation
 import com.aladin.framepro.extensions.buildFrames
 import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
 import com.aladin.framepro.viewmodels.RegisterViewModel
@@ -28,14 +23,9 @@ import com.aladin.framepro.viewmodels.RegisterViewModel
 class FramesFragment : Fragment(R.layout.fragment_frames) {
 
 
-
     private lateinit var dbInstructions: DbInstBase
 
     private lateinit var binding: FragmentFramesBinding
-
-    private lateinit var menuItem: MenuItem
-
-    private val navigation =  Navigation()
 
     private val args: FramesFragmentArgs by navArgs()
 
@@ -47,7 +37,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private val adapter by lazy {
         FramesAdapter { str ->
-            frameSheet = FrameSheet(str, args.register.frames.toMutableList())
+            frameSheet = FrameSheet(str)
             frameSheet.show(requireActivity().supportFragmentManager, "frameTag")
         }
     }
@@ -56,7 +46,8 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentFramesBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
@@ -68,43 +59,32 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         val list = buildFrames()
         dbInstructions = DbInstDataSource(DbInstructionsImpl())
 
+        val mainActivity = activity as? MainActivity
+        mainActivity?.disableBottomBar()
+
 
         binding.framesRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.framesRv.adapter = adapter
         adapter.setList(list)
 
-        binding.previousName.text = args.register.name
-        binding.previousAddress.text = args.register.address
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.toolbar_menu, menu)
-        menuItem = menu.findItem(R.id.check)
-        menuItem.isVisible = false
-        frameDescViewModel.savedOnDb.observe(viewLifecycleOwner){boolean ->
-            if(boolean) menuItem.isVisible = true
+        frameDescViewModel.savedOnDb.observe(viewLifecycleOwner) { boolean ->
+            if (boolean) binding.saveBttn.visibility = View.VISIBLE
         }
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
+        binding.saveBttn.setOnClickListener {
 
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.check -> {
-
-                dbInstructions.saveOnRegisterDb(frameSheet, registerViewModel, args.register.name, args.register.address, frameSheet.list)
-                frameDescViewModel.clearFrameDescList()
-
-
-                navigation.goToRegisterScreen(this@FramesFragment)
-                true
+            if (args.register.frames.isNotEmpty()) {
+                dbInstructions.saveOnRegisterDb(
+                    frameSheet,
+                    registerViewModel,
+                    args.register.name,
+                    args.register.address,
+                    frameSheet.list
+                )
             }
 
-            else -> super.onOptionsItemSelected(item)
         }
-    }
+
 
     }
+}

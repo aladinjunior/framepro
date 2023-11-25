@@ -62,11 +62,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         }
 
 
-
-        binding.newRegisterBttn.setOnClickListener {
-            NewRegisterSheet().show(requireActivity().supportFragmentManager, "newRegisterTag")
-        }
-
         createRegisterView()
 
 
@@ -88,9 +83,13 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         if(list.isEmpty()){
             binding.emptyImage.visibility = View.VISIBLE
             binding.noRegisterText.visibility = View.VISIBLE
+            binding.noRegisterSubtext.visibility = View.VISIBLE
+            binding.image.visibility = View.GONE
         } else {
             binding.emptyImage.visibility = View.GONE
             binding.noRegisterText.visibility = View.GONE
+            binding.noRegisterSubtext.visibility = View.GONE
+            binding.image.visibility = View.VISIBLE
         }
     }
 

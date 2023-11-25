@@ -20,14 +20,7 @@
             app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
 
-    <fragment
-        android:id="@+id/register_sheet"
-        android:name="com.aladin.framepro.ui.NewRegisterSheet">
-        <action
-            android:id="@+id/action_register_sheet_to_frames"
-            app:destination="@id/frames"
-            app:enterAnim="@anim/nav_default_enter_anim" />
-    </fragment>
+
 
     <fragment
         android:id="@+id/frames"
@@ -54,8 +47,8 @@
 
     <fragment
         android:id="@+id/edit_register"
-        android:name="com.aladin.framepro.ui.EditRegisterFragment"
-        tools:layout="@layout/fragment_edit_register" />
+        android:name="com.aladin.framepro.ui.AboutFragment"
+        tools:layout="@layout/fragment_about" />
 
 
 </navigation>

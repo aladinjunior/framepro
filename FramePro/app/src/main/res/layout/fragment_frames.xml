@@ -4,60 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FramesFragment"
-    android:orientation="vertical">
-
-    <View
-        android:id="@+id/top_background"
-        android:background="@color/purple_background"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+    tools:context=".ui.FramesFragment">
 
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/create_frame"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:src="@drawable/baseline_add_home_24"
+        app:tint="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/purple"
+        />
 
-
-        <View
-            android:background="@color/gray_view"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            />
-
-        <TextView
-            android:id="@+id/previous_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="hello world"
-            android:textColor="@color/gray_text"
-            android:textAlignment="center"
-            android:layout_marginTop="3dp"/>
-
-        <TextView
-            android:id="@+id/previous_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="hello world 2 "
-            android:textColor="@color/purple"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="22dp"
-            />
-
-    </FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/save_bttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/create_frame"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/purple"
+        android:src="@drawable/check"
+        app:tint="@color/white"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/frames_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/top_background"
         tools:listitem="@layout/frames_list_item"/>
 
 </RelativeLayout>

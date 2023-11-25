@@ -28,9 +28,15 @@
     <string name="check">Confirma</string>
     <string name="result">Resultado</string>
     <string name="no_register_created">Nenhum registro criado.</string>
-    <string name="no_register_on_db">Nenhum registro no banco de dados.</string>
+    <string name="no_register_yet">Sem Registros, ainda.</string>
     <string name="default_option">Padrão</string>
-    <string name="edit_mode">Personalizável</string>
+    <string name="edit_mode">Editável</string>
     <string name="social">Social</string>
     <string name="about">Sobre</string>
+    <string name="first_register">Faça seu primeiro registro, clique no botão \"Novo Registro\" abaixo.</string>
+    <string name="plus">Mais</string>
+    <string name="home">Home</string>
+    <string name="create_frame">Nova Esquadria</string>
+    <string name="frames">Esquadrias</string>
+    <string name="finalize">Finalizar</string>
 </resources>
