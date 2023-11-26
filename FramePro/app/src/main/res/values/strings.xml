@@ -39,4 +39,10 @@
     <string name="create_frame">Nova Esquadria</string>
     <string name="frames">Esquadrias</string>
     <string name="finalize">Finalizar</string>
+    <string name="about_the_app">Com o FramePro, você pode armazenar facilmente uma variedade de medidas, tudo em um único lugar. Não importa se você está trabalhando em projetos de construção, decoração, artesanato ou simplesmente precisa registrar medidas do dia a dia - o FramePro está aqui para facilitar.</string>
+    <string name="thanks_about">Agradecemos por escolher o FramePro para suas necessidades de medição. Junte-se a nós e descubra como podemos simplificar e aprimorar a maneira como você salva suas medições!</string>
+    <string name="bento_enterprise">Bento Enterprise</string>
+    <string name="github">GitHub</string>
+    <string name="instagram">Instagram</string>
+    <string name="linkedin">Linkedin</string>
 </resources>

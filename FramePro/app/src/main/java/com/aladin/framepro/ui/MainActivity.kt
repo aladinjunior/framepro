@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             aboutIc.setOnClickListener {
-                navController.navigate(R.id.results)
+                navController.navigate(R.id.about)
             }
 
         }

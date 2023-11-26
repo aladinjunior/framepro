@@ -46,7 +46,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/edit_register"
+        android:id="@+id/about"
         android:name="com.aladin.framepro.ui.AboutFragment"
         tools:layout="@layout/fragment_about" />
 
