@@ -7,9 +7,9 @@ import com.aladin.framepro.extensions.map
 import com.aladin.framepro.extensions.toRegister
 import com.aladin.framepro.extensions.toRegisterEntity
 
-class RegisterDbDataSource(
+class RoomRegisterDataSource(
     private val registerDao: RegisterDao
-) : RegisterRepository {
+) : RegisterDataSource {
 
     override val allRegisters: LiveData<List<Register>> =
         registerDao.getAllRegisters().map { listOfRegisterEntity ->

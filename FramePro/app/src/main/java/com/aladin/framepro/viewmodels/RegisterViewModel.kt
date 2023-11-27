@@ -6,16 +6,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aladin.framepro.data.db.AppDatabase
-import com.aladin.framepro.data.repositories.RegisterDbDataSource
-import com.aladin.framepro.data.repositories.RegisterRepository
+import com.aladin.framepro.data.repositories.RoomRegisterDataSource
+import com.aladin.framepro.data.repositories.RegisterDataSource
 import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.register.usecase.CreateRegisterUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
 class RegisterViewModel(
-    application: Application
+    application: Application,
+    private val createRegisterUseCase: CreateRegisterUseCase
 ) : AndroidViewModel(application) {
 
     val name = MutableLiveData<String>()
@@ -24,13 +26,13 @@ class RegisterViewModel(
 
 
 
-    private val registerRepository: RegisterRepository
+    private val registerRepository: RegisterDataSource
     val allRegisters: LiveData<List<Register>>
 
 
     init {
         val dao = AppDatabase.getDatabase(application).registerDao()
-        registerRepository = RegisterDbDataSource(dao)
+        registerRepository = RoomRegisterDataSource(dao)
         allRegisters = registerRepository.allRegisters
     }
 
@@ -38,8 +40,6 @@ class RegisterViewModel(
 
     private val _registerId = MutableLiveData<Long>()
     val registerId: LiveData<Long> get() = _registerId
-
-
 
 
     fun register(register: Register) : Job {
@@ -53,6 +53,10 @@ class RegisterViewModel(
         return viewModelScope.launch(Dispatchers.IO) {
             registerRepository.deleteRegister(register)
         }
+    }
+
+    fun createRegister(register: Register) = viewModelScope.launch {
+        createRegisterUseCase(register)
     }
 
 

@@ -2,13 +2,12 @@ package com.aladin.framepro.data.repositories
 
 import com.aladin.framepro.data.db.daos.FrameDescriptionDao
 import com.aladin.framepro.data.models.FrameDescription
-import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.extensions.toFrameDescription
 import com.aladin.framepro.extensions.toFrameDescriptionEntity
 
-class FrameDescriptionDbDataSource(private val frameDao: FrameDescriptionDao) : FrameDescriptionRepository {
+class RoomFrameDescriptionDataSource(private val frameDao: FrameDescriptionDao) : FrameDescriptionDataSource {
 
-    override suspend fun insertFrameDescription(frameDescription: FrameDescription) {
+    override suspend fun createFrame(frameDescription: FrameDescription) {
         val frameDescriptionEntity = frameDescription.toFrameDescriptionEntity()
         frameDao.insert(frameDescriptionEntity)
     }
