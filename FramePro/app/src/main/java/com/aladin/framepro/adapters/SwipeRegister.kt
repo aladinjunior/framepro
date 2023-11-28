@@ -17,7 +17,6 @@ class SwipeRegister(private val registerAdapter: RegistersAdapter,
         0, ItemTouchHelper.LEFT
     ) {
 
-
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -32,14 +31,12 @@ class SwipeRegister(private val registerAdapter: RegistersAdapter,
 
         try {
             registerViewModel.viewModelScope.launch(Dispatchers.IO) {
-                registerViewModel.delete(register)
+                registerViewModel.deleteRegister(register)
                 Log.i("roomdb", "deleted")
             }
         } catch (e: Exception) {
             Log.e("roomdb", "Error deleting register: ${e.message}")
         }
-
-
 
         registerAdapter.removeRegister(position)
     }

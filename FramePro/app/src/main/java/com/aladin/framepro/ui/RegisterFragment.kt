@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aladin.framepro.R
@@ -13,19 +13,16 @@ import com.aladin.framepro.adapters.RegistersAdapter
 import com.aladin.framepro.adapters.SwipeRegister
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentRegisterBinding
-import com.aladin.framepro.extensions.Navigation
+import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.viewmodels.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
 
-    private val registerViewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        )[RegisterViewModel::class.java]
-    }
+    private val viewModel: RegisterViewModel by viewModels()
 
     private val adapter by lazy {
         RegistersAdapter{  register ->
@@ -35,7 +32,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private val itemTouchHelper by lazy {
-        ItemTouchHelper(SwipeRegister(adapter, registerViewModel))
+        ItemTouchHelper(SwipeRegister(adapter, viewModel))
     }
 
 
@@ -62,8 +59,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         }
 
 
-        createRegisterView()
-
+//        createRegisterView()
 
     }
 
@@ -71,7 +67,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         super.onResume()
 
 
-        registerViewModel.allRegisters.observe(this) {
+        viewModel.allRegisters.observe(this) {
             it?.let{
                 adapter.setList(it)
                 onEmptyList(it)
@@ -94,20 +90,4 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
 
-    private fun createRegisterView() {
-        registerViewModel.name.observe(viewLifecycleOwner) { name ->
-            this.name = name
-        }
-
-        registerViewModel.id.observe(viewLifecycleOwner) { id ->
-            this.id = id
-        }
-
-        registerViewModel.address.observe(viewLifecycleOwner) { address ->
-            this.address = address
-            listOfRegisters.add(Register(id = id, name = name, address = address))
-            adapter.setList(listOfRegisters)
-        }
-
-    }
 }

@@ -1,5 +1,6 @@
 package com.aladin.framepro.extensions
 
+import android.app.Application
 import android.graphics.drawable.LayerDrawable
 import android.view.View
 import android.widget.ImageView

@@ -1,4 +1,4 @@
-package com.aladin.framepro.extensions
+package com.aladin.framepro.util
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -13,7 +13,6 @@ class Navigation {
          val action = RegisterFragmentDirections.actionRegisterToFrames(register)
          fragment.findNavController().navigate(action)
      }
-
 
     fun goToRegisterScreen(fragment: FramesFragment) {
         fragment.findNavController().popBackStack()

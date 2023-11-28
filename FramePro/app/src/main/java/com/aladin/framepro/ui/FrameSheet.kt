@@ -51,8 +51,6 @@ class FrameSheet(
                         description = description.text.toString())
 
 
-
-
                      frameDescViewModel.addFrameDescToList(frameDescription)
 
                     frameDescViewModel.listOfFrames.value?.let {

@@ -6,24 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aladin.framepro.R
 import com.aladin.framepro.adapters.FramesAdapter
-import com.aladin.framepro.data.db.instructions.DbInstBase
-import com.aladin.framepro.data.db.instructions.DbInstDataSource
-import com.aladin.framepro.data.db.instructions.DbInstructionsImpl
 import com.aladin.framepro.databinding.FragmentFramesBinding
+import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.extensions.buildFrames
 import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
 import com.aladin.framepro.viewmodels.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 @Suppress("DEPRECATION")
 class FramesFragment : Fragment(R.layout.fragment_frames) {
 
-
-    private lateinit var dbInstructions: DbInstBase
 
     private lateinit var binding: FragmentFramesBinding
 
@@ -42,9 +41,8 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         }
     }
 
-    private val registerViewModel by lazy {
-        ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
-    }
+
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -57,7 +55,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list = buildFrames()
-        dbInstructions = DbInstDataSource(DbInstructionsImpl())
+
 
         val mainActivity = activity as? MainActivity
         mainActivity?.disableBottomBar()
@@ -73,15 +71,11 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
         binding.saveBttn.setOnClickListener {
 
-            if (args.register.frames.isNotEmpty()) {
-                dbInstructions.saveOnRegisterDb(
-                    frameSheet,
-                    registerViewModel,
-                    args.register.name,
-                    args.register.address,
-                    frameSheet.list
-                )
-            }
+            args.register.frames = frameSheet.list
+            viewModel.createRegister(args.register)
+
+            Navigation().goToRegisterScreen(this)
+
 
         }
 

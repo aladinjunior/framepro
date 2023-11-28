@@ -3,61 +3,46 @@ package com.aladin.framepro.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.aladin.framepro.data.db.AppDatabase
-import com.aladin.framepro.data.repositories.RoomRegisterDataSource
-import com.aladin.framepro.data.repositories.RegisterDataSource
+import com.aladin.framepro.data.repository.RegisterDataSource
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.domain.register.usecase.CreateRegisterUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.aladin.framepro.domain.register.usecase.DeleteRegisterUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class RegisterViewModel(
+@HiltViewModel
+class RegisterViewModel @Inject constructor(
     application: Application,
-    private val createRegisterUseCase: CreateRegisterUseCase
+    dataSource: RegisterDataSource,
+    private val createRegisterUseCase: CreateRegisterUseCase,
+    private val deleteRegisterUseCase: DeleteRegisterUseCase,
 ) : AndroidViewModel(application) {
 
-    val name = MutableLiveData<String>()
-    val address = MutableLiveData<String>()
-    val id = MutableLiveData<Long>()
 
 
 
-    private val registerRepository: RegisterDataSource
-    val allRegisters: LiveData<List<Register>>
+
+    fun emptyFieldError(name: String, address: String) : Boolean =
+        name.isEmpty() or name.isBlank() or address.isEmpty() or address.isBlank()
 
 
-    init {
-        val dao = AppDatabase.getDatabase(application).registerDao()
-        registerRepository = RoomRegisterDataSource(dao)
-        allRegisters = registerRepository.allRegisters
-    }
-
-
-
-    private val _registerId = MutableLiveData<Long>()
-    val registerId: LiveData<Long> get() = _registerId
-
-
-    fun register(register: Register) : Job {
-        return viewModelScope.launch(Dispatchers.IO) {
-            val id = registerRepository.createRegister(register)
-            _registerId.postValue(id)
-        }
-    }
-
-    fun delete(register: Register) : Job {
-        return viewModelScope.launch(Dispatchers.IO) {
-            registerRepository.deleteRegister(register)
-        }
-    }
+    val allRegisters: LiveData<List<Register>> = dataSource.allRegisters
 
     fun createRegister(register: Register) = viewModelScope.launch {
         createRegisterUseCase(register)
     }
+
+    fun deleteRegister(register: Register) = viewModelScope.launch {
+        deleteRegisterUseCase(register)
+    }
+
+
+
+
+
+
 
 
 

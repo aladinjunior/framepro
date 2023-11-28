@@ -1,4 +1,4 @@
-package com.aladin.framepro.data.repositories
+package com.aladin.framepro.data.repository
 
 import androidx.lifecycle.LiveData
 import com.aladin.framepro.data.db.daos.RegisterDao
@@ -6,8 +6,12 @@ import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.extensions.map
 import com.aladin.framepro.extensions.toRegister
 import com.aladin.framepro.extensions.toRegisterEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class RoomRegisterDataSource(
+class RoomRegisterDataSource
+    @Inject constructor(
     private val registerDao: RegisterDao
 ) : RegisterDataSource {
 
@@ -19,13 +23,18 @@ class RoomRegisterDataSource(
         }
 
     override suspend fun createRegister(register: Register) : Long {
-        val registerEntity = register.toRegisterEntity()
-        return registerDao.register(registerEntity)
+        return withContext(Dispatchers.IO) {
+            val registerEntity = register.toRegisterEntity()
+            registerDao.register(registerEntity)
+        }
+
     }
 
     override suspend fun deleteRegister(register: Register) {
-        val registerEntity = register.toRegisterEntity()
-        registerDao.delete(registerEntity)
+        return withContext(Dispatchers.IO){
+            val registerEntity = register.toRegisterEntity()
+            registerDao.delete(registerEntity)
+        }
 
     }
 

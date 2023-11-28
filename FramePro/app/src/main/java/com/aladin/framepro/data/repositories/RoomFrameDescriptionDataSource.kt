@@ -4,8 +4,11 @@ import com.aladin.framepro.data.db.daos.FrameDescriptionDao
 import com.aladin.framepro.data.models.FrameDescription
 import com.aladin.framepro.extensions.toFrameDescription
 import com.aladin.framepro.extensions.toFrameDescriptionEntity
+import javax.inject.Inject
 
-class RoomFrameDescriptionDataSource(private val frameDao: FrameDescriptionDao) : FrameDescriptionDataSource {
+class RoomFrameDescriptionDataSource @Inject constructor(
+    private val frameDao: FrameDescriptionDao
+) : FrameDescriptionDataSource {
 
     override suspend fun createFrame(frameDescription: FrameDescription) {
         val frameDescriptionEntity = frameDescription.toFrameDescriptionEntity()

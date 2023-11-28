@@ -10,12 +10,16 @@ import com.aladin.framepro.data.models.FrameDescription
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.data.repositories.RoomFrameDescriptionDataSource
 import com.aladin.framepro.data.repositories.FrameDescriptionDataSource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FrameDescriptionViewModel(
-    application: Application
+@HiltViewModel
+class FrameDescriptionViewModel @Inject constructor(
+    application: Application,
+    private val dataSource: FrameDescriptionDataSource
 ) : AndroidViewModel(application) {
 
 
@@ -23,7 +27,7 @@ class FrameDescriptionViewModel(
     val width = MutableLiveData<Double>()
     val description = MutableLiveData<String>()
 
-    private val frameDescRepository: FrameDescriptionDataSource
+//    private val frameDescRepository: FrameDescriptionDataSource
 
     private val frameDescriptionList = mutableListOf<FrameDescription>()
 
@@ -36,13 +40,13 @@ class FrameDescriptionViewModel(
 
 
     init {
-        val dao = AppDatabase.getDatabase(application).frameDescriptionDao()
-        frameDescRepository = RoomFrameDescriptionDataSource(dao)
+//        val dao = AppDatabase.getDatabase(application).frameDescriptionDao()
+//        frameDescRepository = RoomFrameDescriptionDataSource(dao)
     }
 
     fun insert(frameDescription: FrameDescription) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
-            frameDescRepository.createFrame(frameDescription)
+            dataSource.createFrame(frameDescription)
 
         }
     }
@@ -59,7 +63,7 @@ class FrameDescriptionViewModel(
 
     fun getFrameDescription(register : Register) : Job {
         return viewModelScope.launch(Dispatchers.IO) {
-            val list = frameDescRepository.registerFrames(register.id)
+            val list = dataSource.registerFrames(register.id)
             _listOfFrames.postValue(list)
         }
     }

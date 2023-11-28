@@ -19,26 +19,26 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun registerDao(): RegisterDao
     abstract fun frameDescriptionDao(): FrameDescriptionDao
-    companion object {
-
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
-
-        fun getDatabase(context: Context): AppDatabase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
-            }
-            synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "framepro_db"
-                ).build()
-                INSTANCE = instance
-                return instance
-            }
-        }
-
-    }
+//    companion object {
+//
+//        @Volatile
+//        private var INSTANCE: AppDatabase? = null
+//
+//        fun getDatabase(context: Context): AppDatabase {
+//            val tempInstance = INSTANCE
+//            if (tempInstance != null) {
+//                return tempInstance
+//            }
+//            synchronized(this) {
+//                val instance = Room.databaseBuilder(
+//                    context.applicationContext,
+//                    AppDatabase::class.java,
+//                    "framepro_db"
+//                ).build()
+//                INSTANCE = instance
+//                return instance
+//            }
+//        }
+//
+//    }
 }

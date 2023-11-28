@@ -5,7 +5,10 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import com.aladin.framepro.R
 import com.aladin.framepro.databinding.ActivityMainBinding
+import com.aladin.framepro.util.Navigation
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
@@ -17,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -24,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         with(binding){
             bttnRegister.setOnClickListener{
-                NewRegisterSheet().show(this@MainActivity.supportFragmentManager, "newRegisterTag")
+                NewRegisterSheet(Navigation()).show(this@MainActivity.supportFragmentManager, "newRegisterTag")
             }
 
             homeIc.setOnClickListener {
