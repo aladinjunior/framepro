@@ -30,7 +30,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private val addFrameViewModel: AddFrameViewModel by viewModels()
 
-    private val mainActivity = activity as? MainActivity
+    private var mainActivity: MainActivity? = null
 
     private val adapter by lazy {
         FramesAdapter { str ->
@@ -52,6 +52,10 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         super.onViewCreated(view, savedInstanceState)
         val list = buildFrames()
 
+        mainActivity = activity as? MainActivity
+
+        mainActivity?.isEnabledBottomBar(false)
+
         binding.framesRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.framesRv.adapter = adapter
         adapter.setList(list)
@@ -70,13 +74,8 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        mainActivity?.isEnabledBottomBar(false)
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onDestroy() {
-   //     mainActivity?.isEnabledBottomBar(true)
+        mainActivity?.isEnabledBottomBar(true)
         super.onDestroy()
     }
 }
