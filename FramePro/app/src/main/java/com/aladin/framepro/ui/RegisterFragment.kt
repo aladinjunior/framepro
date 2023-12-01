@@ -14,7 +14,7 @@ import com.aladin.framepro.adapters.SwipeRegister
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.FragmentRegisterBinding
 import com.aladin.framepro.util.Navigation
-import com.aladin.framepro.viewmodels.RegisterViewModel
+import com.aladin.framepro.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,11 +36,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
 
-    private var name: String = ""
-    private var address: String = ""
-    private var id: Long = 0
-
-    private val listOfRegisters: MutableList<Register> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -58,8 +53,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             itemTouchHelper.attachToRecyclerView(registerRv)
         }
 
-
-//        createRegisterView()
 
     }
 
@@ -80,12 +73,12 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             binding.emptyImage.visibility = View.VISIBLE
             binding.noRegisterText.visibility = View.VISIBLE
             binding.noRegisterSubtext.visibility = View.VISIBLE
-            binding.image.visibility = View.GONE
+            binding.textImage.visibility = View.GONE
         } else {
             binding.emptyImage.visibility = View.GONE
             binding.noRegisterText.visibility = View.GONE
             binding.noRegisterSubtext.visibility = View.GONE
-            binding.image.visibility = View.VISIBLE
+            binding.textImage.visibility = View.VISIBLE
         }
     }
 

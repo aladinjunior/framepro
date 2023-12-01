@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -38,19 +36,26 @@ class MainActivity : AppCompatActivity() {
 
             aboutIc.setOnClickListener {
                 navController.navigate(R.id.about)
+                navController.popBackStack()
             }
 
         }
 
 
-
     }
 
-    fun disableBottomBar() {
+    fun isEnabledBottomBar(enabled: Boolean) {
         with(binding){
-            bttnRegister.isEnabled = false
-            aboutIc.isEnabled = false
-            homeIc.isEnabled = false
+            if (enabled) {
+                bttnRegister.isEnabled = true
+                aboutIc.isEnabled = true
+                homeIc.isEnabled = true
+            } else {
+                bttnRegister.isEnabled = false
+                aboutIc.isEnabled = false
+                homeIc.isEnabled = false
+            }
+
         }
 
     }

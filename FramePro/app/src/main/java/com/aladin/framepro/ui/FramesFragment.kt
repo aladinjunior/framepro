@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aladin.framepro.R
@@ -15,12 +14,11 @@ import com.aladin.framepro.adapters.FramesAdapter
 import com.aladin.framepro.databinding.FragmentFramesBinding
 import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.extensions.buildFrames
-import com.aladin.framepro.viewmodels.FrameDescriptionViewModel
-import com.aladin.framepro.viewmodels.RegisterViewModel
+import com.aladin.framepro.viewmodel.AddFrameViewModel
+import com.aladin.framepro.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-@Suppress("DEPRECATION")
 class FramesFragment : Fragment(R.layout.fragment_frames) {
 
 
@@ -30,25 +28,23 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private lateinit var frameSheet: FrameSheet
 
-    private val frameDescViewModel by lazy {
-        ViewModelProvider(requireActivity())[FrameDescriptionViewModel::class.java]
-    }
+    private val addFrameViewModel: AddFrameViewModel by viewModels()
+
+    private val mainActivity = activity as? MainActivity
 
     private val adapter by lazy {
         FramesAdapter { str ->
-            frameSheet = FrameSheet(str)
+            frameSheet = FrameSheet(str, viewModel = addFrameViewModel)
             frameSheet.show(requireActivity().supportFragmentManager, "frameTag")
         }
     }
 
-
-    private val viewModel: RegisterViewModel by viewModels()
+    private val registerViewModel: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentFramesBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -56,29 +52,31 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         super.onViewCreated(view, savedInstanceState)
         val list = buildFrames()
 
-
-        val mainActivity = activity as? MainActivity
-        mainActivity?.disableBottomBar()
-
-
         binding.framesRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.framesRv.adapter = adapter
         adapter.setList(list)
 
-        frameDescViewModel.savedOnDb.observe(viewLifecycleOwner) { boolean ->
-            if (boolean) binding.saveBttn.visibility = View.VISIBLE
+        addFrameViewModel.savedOnDb.observe(viewLifecycleOwner) {
+            if (it) binding.saveBttn.visibility = View.VISIBLE
         }
 
         binding.saveBttn.setOnClickListener {
 
             args.register.frames = frameSheet.list
-            viewModel.createRegister(args.register)
+            registerViewModel.createRegister(args.register)
 
             Navigation().goToRegisterScreen(this)
 
-
         }
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        mainActivity?.isEnabledBottomBar(false)
+        super.onCreate(savedInstanceState)
+    }
 
+    override fun onDestroy() {
+   //     mainActivity?.isEnabledBottomBar(true)
+        super.onDestroy()
     }
 }

@@ -11,14 +11,13 @@ import com.aladin.framepro.databinding.FragmentNewRegisterSheetBinding
 import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.extensions.setSheetBackground
 import com.aladin.framepro.extensions.showToast
-import com.aladin.framepro.viewmodels.RegisterViewModel
+import com.aladin.framepro.viewmodel.RegisterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class NewRegisterSheet @Inject constructor(
+class NewRegisterSheet(
     private val navigation: Navigation,
 ) : BottomSheetDialogFragment() {
 
@@ -27,6 +26,7 @@ class NewRegisterSheet @Inject constructor(
 
     private var name: String = ""
     private var address: String = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -40,19 +40,23 @@ class NewRegisterSheet @Inject constructor(
         super.onViewCreated(view, savedInstanceState)
         setSheetBackground()
         with(binding) {
+
             saveBttn.setOnClickListener {
-                with(this@NewRegisterSheet){
+                with(this@NewRegisterSheet) {
                     name = binding.name.text.toString()
                     address = binding.address.text.toString()
 
                     val register = Register(name = name, address = address)
 
-                    if (viewModel.emptyFieldError(name, address)) showToast(getString(R.string.fields_cant_be_null))
+                    if (viewModel.emptyFieldError(
+                            name,
+                            address
+                        )
+                    ) showToast(getString(R.string.fields_cant_be_null))
                     else navigation.goToFrameScreen(this, register)
                     dismiss()
 
                 }
-
 
 
             }

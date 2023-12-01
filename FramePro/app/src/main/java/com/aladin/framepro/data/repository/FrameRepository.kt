@@ -1,11 +1,13 @@
 package com.aladin.framepro.data.repository
 
-import com.aladin.framepro.data.models.FrameDescription
-import com.aladin.framepro.data.repositories.FrameDescriptionDataSource
+import com.aladin.framepro.data.models.Frame
+import javax.inject.Inject
 
-class FrameRepository(private val dataSource: FrameDescriptionDataSource) {
+class FrameRepository @Inject constructor(
+    private val dataSource: FrameDescriptionDataSource
+) {
 
-    suspend fun createFrame(frameDescription: FrameDescription)
-    = dataSource.createFrame(frameDescription)
+    suspend fun createFrame(frame: Frame)
+    = dataSource.createFrame(frame)
 
 }

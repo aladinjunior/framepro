@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aladin.framepro.R
 import com.aladin.framepro.data.models.Register
 import com.aladin.framepro.databinding.RegistersListItemBinding
+import com.aladin.framepro.extensions.oval
 
 class RegistersAdapter(private val onRegisterClick: (register: Register) -> Unit) : RecyclerView.Adapter<RegistersAdapter.RegistersViewHolder>(){
 
 
     val listOfRegisters: MutableList<Register> = mutableListOf()
-
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -47,8 +47,9 @@ class RegistersAdapter(private val onRegisterClick: (register: Register) -> Unit
 
         fun bind(register: Register){
             with(binding){
-                image.setImageResource(R.drawable.avatar)
-                name.text = register.name
+                textImage.text = register.name.first().toString().uppercase()
+                textImage.background = itemView.oval(itemView.context.getColor(R.color.purple_darker))
+                name.text = register.name.uppercase()
                 address.text = register.address
             }
             itemView.setOnClickListener {

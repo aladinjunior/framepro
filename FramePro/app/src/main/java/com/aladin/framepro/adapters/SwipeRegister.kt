@@ -4,11 +4,8 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.aladin.framepro.data.models.Register
-import com.aladin.framepro.viewmodels.RegisterViewModel
-import kotlinx.coroutines.CoroutineScope
+import com.aladin.framepro.viewmodel.RegisterViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class SwipeRegister(private val registerAdapter: RegistersAdapter,

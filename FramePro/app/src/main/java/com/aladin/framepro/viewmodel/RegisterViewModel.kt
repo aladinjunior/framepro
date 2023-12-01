@@ -1,4 +1,4 @@
-package com.aladin.framepro.viewmodels
+package com.aladin.framepro.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -21,9 +21,6 @@ class RegisterViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
 
-
-
-
     fun emptyFieldError(name: String, address: String) : Boolean =
         name.isEmpty() or name.isBlank() or address.isEmpty() or address.isBlank()
 
@@ -37,10 +34,6 @@ class RegisterViewModel @Inject constructor(
     fun deleteRegister(register: Register) = viewModelScope.launch {
         deleteRegisterUseCase(register)
     }
-
-
-
-
 
 
 

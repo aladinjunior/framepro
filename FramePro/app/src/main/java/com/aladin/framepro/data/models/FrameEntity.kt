@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "frame_description_table")
-data class FrameDescriptionEntity(
+data class FrameEntity(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var registerId: Long,
     var name: String,

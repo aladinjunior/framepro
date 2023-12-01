@@ -7,5 +7,5 @@ data class Register(
     var id: Long = 0,
     var name: String = "",
     var address: String = "",
-    var frames: List<FrameDescription> = listOf()
+    var frames: List<Frame> = listOf()
 ) : Serializable

@@ -1,8 +1,13 @@
 package com.aladin.framepro.data.models
 
-data class Frame(
-    var imgCover: Int,
-    var name: String,
-    var subtitle: String = "Alumínio"
+import java.io.Serializable
 
-)
+
+data class Frame(
+    var id: Long = 0,
+    var registerId: Long = 0,
+    var name: String = "",
+    var width: Double = 0.0,
+    var height: Double = 0.0,
+    var description: String = ""
+) : Serializable

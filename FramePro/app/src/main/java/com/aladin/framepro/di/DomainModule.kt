@@ -14,8 +14,12 @@ import dagger.hilt.android.components.ViewModelComponent
 interface DomainModule {
 
     @Binds
-    fun creteRegisterUseCase(useCase: CreateRegisterUseCaseImpl) : CreateRegisterUseCase
+    fun createRegisterUseCase(useCase: CreateRegisterUseCaseImpl) : CreateRegisterUseCase
 
     @Binds
     fun deleteRegisterUseCase(useCase: DeleteRegisterUseCaseImpl) : DeleteRegisterUseCase
+
+//    fun createFrameUseCase(useCase: CreateFrameUseCaseImpl) : CreateFrameUseCase
+
+
 }

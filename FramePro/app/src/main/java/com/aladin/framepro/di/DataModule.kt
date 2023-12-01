@@ -1,8 +1,8 @@
 package com.aladin.framepro.di
 
-import com.aladin.framepro.data.repositories.FrameDescriptionDataSource
+import com.aladin.framepro.data.repository.FrameDescriptionDataSource
 import com.aladin.framepro.data.repository.RegisterDataSource
-import com.aladin.framepro.data.repositories.RoomFrameDescriptionDataSource
+import com.aladin.framepro.data.repository.RoomFrameDescriptionDataSource
 import com.aladin.framepro.data.repository.RoomRegisterDataSource
 import dagger.Binds
 import dagger.Module

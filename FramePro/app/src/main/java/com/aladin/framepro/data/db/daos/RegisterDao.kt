@@ -6,7 +6,6 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.aladin.framepro.data.models.FrameDescriptionEntity
 import com.aladin.framepro.data.models.RegisterEntity
 
 

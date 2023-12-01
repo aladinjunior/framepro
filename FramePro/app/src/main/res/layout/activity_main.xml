@@ -14,20 +14,19 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/cardview"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_navigation"
         tools:ignore="FragmentTagUsage"
         tools:layout="@layout/fragment_register" />
 
 
-
-
     <androidx.cardview.widget.CardView
-
-        android:backgroundTint="@color/gray_view"
+        android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/gray_view"
         app:cardElevation="8dp">
 
         <RelativeLayout
@@ -36,75 +35,68 @@
             android:layout_height="80dp">
 
             <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
                 android:id="@+id/home_ic"
-                android:layout_toStartOf="@id/bttn_register"
-                android:layout_alignParentStart="true"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/home"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toStartOf="@id/bttn_register"
                 android:contentDescription="@null"
-                />
+                android:src="@drawable/home" />
 
             <TextView
                 android:id="@+id/default_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="@string/home"
-                android:layout_alignEnd="@id/home_ic"
+                android:layout_below="@id/home_ic"
                 android:layout_alignStart="@id/home_ic"
+                android:layout_alignEnd="@id/home_ic"
+                android:text="@string/home"
                 android:textAlignment="center"
-                android:layout_below="@id/home_ic"/>
+                android:textSize="15sp" />
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_marginTop="8dp"
                 android:id="@+id/bttn_register"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
                 android:backgroundTint="@color/purple"
-                app:tint="@color/white"
                 android:contentDescription="@null"
                 android:src="@drawable/add"
+                app:tint="@color/white"
                 tools:ignore="SpeakableTextPresentCheck" />
 
 
             <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
                 android:id="@+id/about_ic"
-                android:layout_toEndOf="@id/bttn_register"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:src="@drawable/about"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/bttn_register"
                 android:contentDescription="@null"
-                />
+                android:src="@drawable/about" />
 
             <TextView
                 android:id="@+id/about_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="@string/about"
-                android:layout_alignEnd="@id/about_ic"
+                android:layout_below="@id/about_ic"
                 android:layout_alignStart="@id/about_ic"
+                android:layout_alignEnd="@id/about_ic"
+                android:text="@string/about"
                 android:textAlignment="center"
-                android:layout_below="@id/about_ic"/>
+                android:textSize="15sp" />
 
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-
-
-
-
-
 
 
 </RelativeLayout>

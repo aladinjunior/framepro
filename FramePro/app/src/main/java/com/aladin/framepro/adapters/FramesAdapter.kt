@@ -4,19 +4,19 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.aladin.framepro.data.models.Frame
+import com.aladin.framepro.data.models.FrameView
 import com.aladin.framepro.databinding.FramesListItemBinding
 
 class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
 
 
-    private val listOfFrames: MutableList<Frame> = mutableListOf()
+    private val listOfFrameViews: MutableList<FrameView> = mutableListOf()
 
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(newList: List<Frame>){
-        listOfFrames.clear()
-        listOfFrames.addAll(newList)
+    fun setList(newList: List<FrameView>){
+        listOfFrameViews.clear()
+        listOfFrameViews.addAll(newList)
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FramesViewHolder {
@@ -26,22 +26,22 @@ class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : Recycler
     }
 
     override fun onBindViewHolder(holder: FramesViewHolder, position: Int) {
-        holder.bind(listOfFrames[position])
+        holder.bind(listOfFrameViews[position])
     }
 
     override fun getItemCount(): Int {
-        return listOfFrames.size
+        return listOfFrameViews.size
     }
 
     inner class FramesViewHolder(private val binding: FramesListItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(frame: Frame){
+        fun bind(frameView: FrameView){
             with(binding){
-                frameTitle.text = frame.name
-                frameSubtitle.text = frame.subtitle
-                frameCover.setImageResource(frame.imgCover)
+                frameTitle.text = frameView.name
+                frameSubtitle.text = frameView.subtitle
+                frameCover.setImageResource(frameView.imgCover)
 
                 itemView.setOnClickListener {
-                    onFrameClick.invoke(frame.name)
+                    onFrameClick.invoke(frameView.name)
                 }
 
             }
