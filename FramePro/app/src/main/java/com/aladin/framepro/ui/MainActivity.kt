@@ -31,10 +31,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             homeIc.setOnClickListener {
+                navController.popBackStack()
                 navController.navigate(R.id.register)
             }
 
             aboutIc.setOnClickListener {
+                navController.popBackStack()
                 navController.navigate(R.id.about)
             }
 
