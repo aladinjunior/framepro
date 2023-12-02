@@ -37,11 +37,11 @@ class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : Recycler
         fun bind(frameView: FrameView){
             with(binding){
                 frameTitle.text = frameView.name
-                frameSubtitle.text = frameView.subtitle
-                frameCover.setImageResource(frameView.imgCover)
+                frameSubtitle.text = frameView.material
+                frameCover.setImageURI(frameView.imgCover)
 
                 itemView.setOnClickListener {
-                    onFrameClick.invoke(frameView.name)
+                    onFrameClick(frameView.name)
                 }
 
             }

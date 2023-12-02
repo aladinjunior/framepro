@@ -21,8 +21,8 @@ class RegisterViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
 
-    fun emptyFieldError(name: String, address: String) : Boolean =
-        name.isEmpty() or name.isBlank() or address.isEmpty() or address.isBlank()
+    fun emptyFieldError(firstField: String, secondField: String) : Boolean =
+        firstField.isEmpty() or firstField.isBlank() or secondField.isEmpty() or secondField.isBlank()
 
 
     val allRegisters: LiveData<List<Register>> = dataSource.allRegisters

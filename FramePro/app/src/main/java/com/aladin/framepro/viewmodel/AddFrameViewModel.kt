@@ -36,9 +36,11 @@ class AddFrameViewModel @Inject constructor(
             description = description
         )
 
-    fun emptyFieldError(width: Editable?, height: Editable?, description: Editable?) : Boolean =
+    fun emptySaveFieldError(width: Editable?, height: Editable?, description: Editable?) : Boolean =
          width?.isNotEmpty() == true && height?.isNotEmpty() == true && description?.isNotEmpty() == true
 
+    fun emptyAddFieldError(name: String, material: String) : Boolean =
+        name.isNotEmpty() && material.isNotEmpty()
 
     fun addFrameToList(frame: Frame) = viewModelScope.launch {
         listOfFrames.add(frame)

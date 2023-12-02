@@ -46,4 +46,7 @@
     <string name="instagram">Instagram</string>
     <string name="linkedin">Linkedin</string>
     <string name="registers">Registros</string>
+    <string name="new_frame">Nova Esquadria</string>
+    <string name="material">Material</string>
+    <string name="frame_name">Nome da Esquadria</string>
 </resources>

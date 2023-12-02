@@ -11,9 +11,11 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aladin.framepro.R
 import com.aladin.framepro.adapters.FramesAdapter
+import com.aladin.framepro.data.models.initialFrames
 import com.aladin.framepro.databinding.FragmentFramesBinding
 import com.aladin.framepro.util.Navigation
-import com.aladin.framepro.extensions.buildFrames
+
+import com.aladin.framepro.extensions.showToast
 import com.aladin.framepro.viewmodel.AddFrameViewModel
 import com.aladin.framepro.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,15 +52,17 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val list = buildFrames()
+
 
         mainActivity = activity as? MainActivity
 
         mainActivity?.isEnabledBottomBar(false)
 
+
+
         binding.framesRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.framesRv.adapter = adapter
-        adapter.setList(list)
+        adapter.setList(initialFrames(requireContext()))
 
         addFrameViewModel.savedOnDb.observe(viewLifecycleOwner) {
             if (it) binding.saveBttn.visibility = View.VISIBLE

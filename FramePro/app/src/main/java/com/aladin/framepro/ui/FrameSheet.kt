@@ -39,7 +39,7 @@ class FrameSheet(
         binding.saveBttn.setOnClickListener {
             with(binding) {
                 with(viewModel){
-                    if (emptyFieldError(width.text, height.text, description.text)) {
+                    if (emptySaveFieldError(width.text, height.text, description.text)) {
 
                         val frame = buildFrame(
                             name,
