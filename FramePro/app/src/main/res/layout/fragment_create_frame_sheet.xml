@@ -28,6 +28,16 @@
         android:layout_marginVertical="10dp"
         />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pick_image_button"
+        style="@style/NoRoundedCornersButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@android:color/transparent"
+        android:text="@string/pick_image"
+        android:textColor="@color/purple_darker" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayoutUniqueColorForThemes"

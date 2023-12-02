@@ -14,8 +14,6 @@ import com.aladin.framepro.adapters.FramesAdapter
 import com.aladin.framepro.data.models.initialFrames
 import com.aladin.framepro.databinding.FragmentFramesBinding
 import com.aladin.framepro.util.Navigation
-
-import com.aladin.framepro.extensions.showToast
 import com.aladin.framepro.viewmodel.AddFrameViewModel
 import com.aladin.framepro.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,16 +28,13 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private lateinit var frameSheet: FrameSheet
 
+    private lateinit var createFrameSheet: CreateFrameSheet
+
     private val addFrameViewModel: AddFrameViewModel by viewModels()
 
     private var mainActivity: MainActivity? = null
 
-    private val adapter by lazy {
-        FramesAdapter { str ->
-            frameSheet = FrameSheet(str, viewModel = addFrameViewModel)
-            frameSheet.show(requireActivity().supportFragmentManager, "frameTag")
-        }
-    }
+    private lateinit var adapter: FramesAdapter
 
     private val registerViewModel: RegisterViewModel by viewModels()
 
@@ -58,14 +53,26 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
         mainActivity?.isEnabledBottomBar(false)
 
+        adapter = FramesAdapter(initialFrames(requireContext())) { frameName ->
+            frameSheet = FrameSheet(frameName, viewModel = addFrameViewModel)
+            frameSheet.show(requireActivity().supportFragmentManager, "frameTag")
+        }
+
 
 
         binding.framesRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.framesRv.adapter = adapter
-        adapter.setList(initialFrames(requireContext()))
+
 
         addFrameViewModel.savedOnDb.observe(viewLifecycleOwner) {
             if (it) binding.saveBttn.visibility = View.VISIBLE
+        }
+
+        binding.createFrame.setOnClickListener {
+            createFrameSheet = CreateFrameSheet(addFrameViewModel) { createdFrameView ->
+                adapter.updateList(createdFrameView)
+            }
+            createFrameSheet.show(requireActivity().supportFragmentManager, "frameTag")
         }
 
         binding.saveBttn.setOnClickListener {

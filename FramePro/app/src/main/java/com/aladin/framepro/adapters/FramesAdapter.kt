@@ -1,22 +1,16 @@
 package com.aladin.framepro.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aladin.framepro.data.models.FrameView
 import com.aladin.framepro.databinding.FramesListItemBinding
 
-class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
+class FramesAdapter(private val frameViews: MutableList<FrameView>, private val onFrameClick: (name: String) -> Unit) : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
 
 
-    private val listOfFrameViews: MutableList<FrameView> = mutableListOf()
-
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setList(newList: List<FrameView>){
-        listOfFrameViews.clear()
-        listOfFrameViews.addAll(newList)
+    fun updateList(frameView: FrameView) {
+        frameViews.add(frameView)
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FramesViewHolder {
@@ -26,11 +20,11 @@ class FramesAdapter(private val onFrameClick: (name: String) -> Unit) : Recycler
     }
 
     override fun onBindViewHolder(holder: FramesViewHolder, position: Int) {
-        holder.bind(listOfFrameViews[position])
+        holder.bind(frameViews[position])
     }
 
     override fun getItemCount(): Int {
-        return listOfFrameViews.size
+        return frameViews.size
     }
 
     inner class FramesViewHolder(private val binding: FramesListItemBinding) : RecyclerView.ViewHolder(binding.root){
