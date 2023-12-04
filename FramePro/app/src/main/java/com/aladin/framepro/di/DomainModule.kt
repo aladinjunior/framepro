@@ -1,5 +1,7 @@
 package com.aladin.framepro.di
 
+import com.aladin.framepro.domain.usecase.frame.CreateFrameViewUseCase
+import com.aladin.framepro.domain.usecase.frame.CreateFrameViewUseCaseImpl
 import com.aladin.framepro.domain.usecase.register.CreateRegisterUseCase
 import com.aladin.framepro.domain.usecase.register.CreateRegisterUseCaseImpl
 import com.aladin.framepro.domain.usecase.register.DeleteRegisterUseCase
@@ -18,6 +20,9 @@ interface DomainModule {
 
     @Binds
     fun deleteRegisterUseCase(useCase: DeleteRegisterUseCaseImpl) : DeleteRegisterUseCase
+
+    @Binds
+    fun createFrameViewUseCase(useCase: CreateFrameViewUseCaseImpl) : CreateFrameViewUseCase
 
 //    fun createFrameUseCase(useCase: CreateFrameUseCaseImpl) : CreateFrameUseCase
 

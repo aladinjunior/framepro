@@ -1,8 +1,8 @@
 package com.aladin.framepro.di
 
-import com.aladin.framepro.data.repository.FrameDescriptionDataSource
+import com.aladin.framepro.data.repository.FrameViewDataSource
 import com.aladin.framepro.data.repository.RegisterDataSource
-import com.aladin.framepro.data.repository.RoomFrameDescriptionDataSource
+import com.aladin.framepro.data.repository.RoomFrameViewDataSource
 import com.aladin.framepro.data.repository.RoomRegisterDataSource
 import dagger.Binds
 import dagger.Module
@@ -17,5 +17,5 @@ interface DataModule {
     fun createRegisterDataSource(dataSource: RoomRegisterDataSource) : RegisterDataSource
 
     @Binds
-    fun createFrameDescriptionDataSource(dataSource: RoomFrameDescriptionDataSource) : FrameDescriptionDataSource
+    fun createFrameDescriptionDataSource(dataSource: RoomFrameViewDataSource) : FrameViewDataSource
 }

@@ -14,6 +14,8 @@ import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
 import com.aladin.framepro.domain.model.Frame
 import com.aladin.framepro.domain.model.FrameEntity
+import com.aladin.framepro.domain.model.FrameView
+import com.aladin.framepro.domain.model.FrameViewEntity
 import com.aladin.framepro.domain.model.RegisterEntity
 import com.aladin.framepro.domain.model.Register
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -70,6 +72,16 @@ fun Frame.toFrameDescriptionEntity() : FrameEntity {
             width = width,
             height = height,
             description = description
+        )
+    }
+}
+
+fun FrameView.toFrameViewEntity() : FrameViewEntity {
+    return with(this){
+        FrameViewEntity(
+            imgCover = imgCover,
+            name = name,
+            material = material
         )
     }
 }

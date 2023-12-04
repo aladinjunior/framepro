@@ -36,6 +36,6 @@ object AppModule {
     @Provides
     fun provideFrameDescriptionDao(
         db: AppDatabase
-    ) = db.frameDescriptionDao()
+    ) = db.frameViewDao()
 
 }

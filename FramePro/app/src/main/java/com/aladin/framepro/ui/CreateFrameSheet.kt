@@ -73,6 +73,7 @@ class CreateFrameSheet(
                         showToast(getString(R.string.fields_cant_be_null))
                         dismiss()
                     } else {
+                        viewModel.createFrameView(frameView)
                         onCreatedFrameClick(frameView)
                         dismiss()
                     }

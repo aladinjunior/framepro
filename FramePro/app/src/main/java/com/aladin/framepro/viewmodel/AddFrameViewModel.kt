@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.aladin.framepro.domain.model.Frame
+import com.aladin.framepro.domain.model.FrameView
+import com.aladin.framepro.domain.usecase.frame.CreateFrameViewUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddFrameViewModel @Inject constructor(
     application: Application,
+    private val createFrameViewUseCase: CreateFrameViewUseCase
 ) : AndroidViewModel(application) {
 
 
@@ -51,5 +54,11 @@ class AddFrameViewModel @Inject constructor(
         _savedOnDb.postValue(boolean)
         return boolean
     }
+
+    fun createFrameView(frameView: FrameView) = viewModelScope.launch {
+        createFrameViewUseCase(frameView)
+    }
+
+
 
 }

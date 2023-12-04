@@ -5,15 +5,16 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.aladin.framepro.domain.model.FrameEntity
+import com.aladin.framepro.domain.model.FrameViewEntity
 
 @Dao
-interface FrameDescriptionDao {
+interface FrameViewDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(frameEntity: FrameEntity)
+    fun insert(frameView: FrameViewEntity)
 
-    @Query("SELECT * FROM frame_description_table WHERE id = :id")
-    fun getRegisterFrame(id: Long) : List<FrameEntity>
+//    @Query("SELECT * FROM frame_view_entity_table WHERE id = :id")
+//    fun getRegisterFrame(id: Long) : List<FrameEntity>
 
 
 }

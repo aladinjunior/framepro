@@ -13,4 +13,4 @@ data class FrameEntity(
     var height: Double,
     var description: String
 
-    )
+)
