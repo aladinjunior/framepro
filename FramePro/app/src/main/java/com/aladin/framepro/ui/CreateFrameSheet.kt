@@ -1,13 +1,16 @@
 package com.aladin.framepro.ui
 
+import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import com.aladin.framepro.R
 import com.aladin.framepro.data.models.FrameView
 import com.aladin.framepro.databinding.FragmentCreateFrameSheetBinding
+import com.aladin.framepro.extensions.resourcesToUri
 import com.aladin.framepro.extensions.setSheetBackground
 import com.aladin.framepro.extensions.showToast
 import com.aladin.framepro.viewmodel.AddFrameViewModel
@@ -25,12 +28,17 @@ class CreateFrameSheet(
 
     private var name: String = ""
     private var material: String = ""
-    private var imageUri: Uri = Uri.EMPTY
+    private lateinit var imageUri: Uri
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let{
             imageUri = it
         }
+    }
+
+    override fun onAttach(context: Context) {
+        imageUri = resourcesToUri(requireContext(), R.drawable.b)
+        super.onAttach(context)
     }
 
 
@@ -62,7 +70,7 @@ class CreateFrameSheet(
                     val frameView = FrameView(imageUri, name, material)
 
                     if (!viewModel.emptyAddFieldError(name, material)){
-                        showToast(getString(com.aladin.framepro.R.string.fields_cant_be_null))
+                        showToast(getString(R.string.fields_cant_be_null))
                         dismiss()
                     } else {
                         onCreatedFrameClick(frameView)
