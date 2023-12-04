@@ -3,7 +3,7 @@ package com.aladin.framepro.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.aladin.framepro.data.models.FrameView
+import com.aladin.framepro.domain.model.FrameView
 import com.aladin.framepro.databinding.FramesListItemBinding
 
 class FramesAdapter(private val frameViews: MutableList<FrameView>, private val onFrameClick: (name: String) -> Unit) : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {

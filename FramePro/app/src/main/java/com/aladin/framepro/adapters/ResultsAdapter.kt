@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aladin.framepro.R
-import com.aladin.framepro.data.models.Frame
+import com.aladin.framepro.domain.model.Frame
 import com.aladin.framepro.databinding.ResultFramesListItemBinding
 
 class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ResultsViewHolder>() {

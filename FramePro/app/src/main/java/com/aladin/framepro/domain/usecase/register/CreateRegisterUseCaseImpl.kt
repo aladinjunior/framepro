@@ -1,6 +1,6 @@
-package com.aladin.framepro.domain.register.usecase
+package com.aladin.framepro.domain.usecase.register
 
-import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.model.Register
 import com.aladin.framepro.data.repository.RegisterRepository
 import javax.inject.Inject
 

@@ -33,7 +33,7 @@
 
         <argument
             android:name="register"
-            app:argType="com.aladin.framepro.data.models.Register" />
+            app:argType="com.aladin.framepro.domain.model.Register" />
     </fragment>
 
     <fragment
@@ -42,7 +42,7 @@
         tools:layout="@layout/fragment_results">
         <argument
             android:name="register"
-            app:argType="com.aladin.framepro.data.models.Register" />
+            app:argType="com.aladin.framepro.domain.model.Register" />
     </fragment>
 
     <fragment

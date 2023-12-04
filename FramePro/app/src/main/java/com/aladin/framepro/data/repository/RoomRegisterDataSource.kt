@@ -2,7 +2,7 @@ package com.aladin.framepro.data.repository
 
 import androidx.lifecycle.LiveData
 import com.aladin.framepro.data.db.daos.RegisterDao
-import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.model.Register
 import com.aladin.framepro.extensions.map
 import com.aladin.framepro.extensions.toRegister
 import com.aladin.framepro.extensions.toRegisterEntity

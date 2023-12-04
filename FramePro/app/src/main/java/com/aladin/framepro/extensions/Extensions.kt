@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
-import com.aladin.framepro.data.models.Frame
-import com.aladin.framepro.data.models.FrameEntity
-import com.aladin.framepro.data.models.RegisterEntity
-import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.model.Frame
+import com.aladin.framepro.domain.model.FrameEntity
+import com.aladin.framepro.domain.model.RegisterEntity
+import com.aladin.framepro.domain.model.Register
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -42,7 +42,7 @@ fun Register.toRegisterEntity() : RegisterEntity {
     }
 }
 
-fun RegisterEntity.toRegister() : Register{
+fun RegisterEntity.toRegister() : Register {
     return with(this){
         Register(
             id = id,

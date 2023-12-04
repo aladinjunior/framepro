@@ -1,4 +1,4 @@
-package com.aladin.framepro.data.models
+package com.aladin.framepro.domain.model
 
 import android.content.Context
 import android.net.Uri

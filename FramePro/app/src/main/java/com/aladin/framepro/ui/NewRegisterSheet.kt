@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.aladin.framepro.R
-import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.model.Register
 import com.aladin.framepro.databinding.FragmentNewRegisterSheetBinding
 import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.extensions.setSheetBackground

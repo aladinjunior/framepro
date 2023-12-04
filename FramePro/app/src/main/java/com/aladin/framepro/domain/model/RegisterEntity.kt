@@ -1,4 +1,4 @@
-package com.aladin.framepro.data.models
+package com.aladin.framepro.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

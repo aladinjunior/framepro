@@ -1,7 +1,7 @@
 package com.aladin.framepro.data.repository
 
 import androidx.lifecycle.LiveData
-import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.model.Register
 
 interface RegisterDataSource {
 

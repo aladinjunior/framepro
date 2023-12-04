@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import com.aladin.framepro.R
-import com.aladin.framepro.data.models.FrameView
+import com.aladin.framepro.domain.model.FrameView
 import com.aladin.framepro.databinding.FragmentCreateFrameSheetBinding
 import com.aladin.framepro.extensions.resourcesToUri
 import com.aladin.framepro.extensions.setSheetBackground

@@ -1,7 +1,7 @@
 package com.aladin.framepro.extensions
 
 import androidx.room.TypeConverter
-import com.aladin.framepro.data.models.Frame
+import com.aladin.framepro.domain.model.Frame
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

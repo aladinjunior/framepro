@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.aladin.framepro.data.models.FrameEntity
+import com.aladin.framepro.domain.model.FrameEntity
 
 @Dao
 interface FrameDescriptionDao {

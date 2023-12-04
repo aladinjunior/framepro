@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aladin.framepro.R
 import com.aladin.framepro.adapters.RegistersAdapter
 import com.aladin.framepro.adapters.SwipeRegister
-import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.model.Register
 import com.aladin.framepro.databinding.FragmentRegisterBinding
 import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.viewmodel.RegisterViewModel

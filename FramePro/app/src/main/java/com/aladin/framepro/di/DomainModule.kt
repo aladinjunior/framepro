@@ -1,9 +1,9 @@
 package com.aladin.framepro.di
 
-import com.aladin.framepro.domain.register.usecase.CreateRegisterUseCase
-import com.aladin.framepro.domain.register.usecase.CreateRegisterUseCaseImpl
-import com.aladin.framepro.domain.register.usecase.DeleteRegisterUseCase
-import com.aladin.framepro.domain.register.usecase.DeleteRegisterUseCaseImpl
+import com.aladin.framepro.domain.usecase.register.CreateRegisterUseCase
+import com.aladin.framepro.domain.usecase.register.CreateRegisterUseCaseImpl
+import com.aladin.framepro.domain.usecase.register.DeleteRegisterUseCase
+import com.aladin.framepro.domain.usecase.register.DeleteRegisterUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

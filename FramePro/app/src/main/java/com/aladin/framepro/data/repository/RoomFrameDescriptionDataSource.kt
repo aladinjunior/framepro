@@ -1,7 +1,7 @@
 package com.aladin.framepro.data.repository
 
 import com.aladin.framepro.data.db.daos.FrameDescriptionDao
-import com.aladin.framepro.data.models.Frame
+import com.aladin.framepro.domain.model.Frame
 import com.aladin.framepro.extensions.toFrameDescription
 import com.aladin.framepro.extensions.toFrameDescriptionEntity
 import javax.inject.Inject

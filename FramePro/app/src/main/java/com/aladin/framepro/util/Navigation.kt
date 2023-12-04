@@ -2,7 +2,7 @@ package com.aladin.framepro.util
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.aladin.framepro.data.models.Register
+import com.aladin.framepro.domain.model.Register
 import com.aladin.framepro.ui.FramesFragment
 import com.aladin.framepro.ui.NewRegisterSheet
 import com.aladin.framepro.ui.RegisterFragmentDirections

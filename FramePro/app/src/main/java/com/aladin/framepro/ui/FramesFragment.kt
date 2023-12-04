@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aladin.framepro.R
 import com.aladin.framepro.adapters.FramesAdapter
-import com.aladin.framepro.data.models.initialFrames
+import com.aladin.framepro.domain.model.initialFrames
 import com.aladin.framepro.databinding.FragmentFramesBinding
 import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.viewmodel.AddFrameViewModel

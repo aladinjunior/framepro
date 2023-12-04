@@ -1,6 +1,6 @@
 package com.aladin.framepro.data.repository
 
-import com.aladin.framepro.data.models.Frame
+import com.aladin.framepro.domain.model.Frame
 import javax.inject.Inject
 
 class FrameRepository @Inject constructor(

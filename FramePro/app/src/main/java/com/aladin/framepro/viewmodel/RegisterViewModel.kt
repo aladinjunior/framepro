@@ -5,9 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.aladin.framepro.data.repository.RegisterDataSource
-import com.aladin.framepro.data.models.Register
-import com.aladin.framepro.domain.register.usecase.CreateRegisterUseCase
-import com.aladin.framepro.domain.register.usecase.DeleteRegisterUseCase
+import com.aladin.framepro.domain.model.Register
+import com.aladin.framepro.domain.usecase.register.CreateRegisterUseCase
+import com.aladin.framepro.domain.usecase.register.DeleteRegisterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
