@@ -1,18 +1,21 @@
 package com.aladin.framepro.ui
 
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.aladin.framepro.R
 import com.aladin.framepro.adapters.FramesAdapter
-import com.aladin.framepro.domain.model.initialFrames
 import com.aladin.framepro.databinding.FragmentFramesBinding
+import com.aladin.framepro.domain.model.initialFrames
 import com.aladin.framepro.util.Navigation
 import com.aladin.framepro.viewmodel.AddFrameViewModel
 import com.aladin.framepro.viewmodel.RegisterViewModel
@@ -38,6 +41,8 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
     private val registerViewModel: RegisterViewModel by viewModels()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -45,6 +50,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -68,10 +74,17 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
             if (it) binding.saveBttn.visibility = View.VISIBLE
         }
 
+
+
+        addFrameViewModel.allCreatedFrame.observe(viewLifecycleOwner) {
+            adapter.setList(it)
+        }
+
+
+
+
         binding.createFrame.setOnClickListener {
-            createFrameSheet = CreateFrameSheet(addFrameViewModel) { createdFrameView ->
-                adapter.updateList(createdFrameView)
-            }
+            createFrameSheet = CreateFrameSheet(addFrameViewModel)
             createFrameSheet.show(requireActivity().supportFragmentManager, "frameTag")
         }
 
@@ -84,6 +97,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
         }
     }
+
 
     override fun onDestroy() {
         mainActivity?.isEnabledBottomBar(true)

@@ -64,6 +64,8 @@ fun <T, U> LiveData<T>.map(transform: (T) -> U): LiveData<U> {
 }
 
 
+
+
 fun Frame.toFrameDescriptionEntity() : FrameEntity {
     return with(this){
         FrameEntity(
@@ -86,6 +88,15 @@ fun FrameView.toFrameViewEntity() : FrameViewEntity {
     }
 }
 
+fun FrameViewEntity.toFrameView() : FrameView {
+    return with(this){
+        FrameView(
+            imgCover = imgCover,
+            name = name,
+            material = material
+        )
+    }
+}
 fun FrameEntity.toFrameDescription() : Frame {
     return with(this){
         Frame(

@@ -1,16 +1,23 @@
 package com.aladin.framepro.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aladin.framepro.domain.model.FrameView
 import com.aladin.framepro.databinding.FramesListItemBinding
+import com.bumptech.glide.Glide
 
 class FramesAdapter(private val frameViews: MutableList<FrameView>, private val onFrameClick: (name: String) -> Unit) : RecyclerView.Adapter<FramesAdapter.FramesViewHolder>() {
 
 
     fun updateList(frameView: FrameView) {
         frameViews.add(frameView)
+        notifyDataSetChanged()
+    }
+
+    fun setList(list: List<FrameView>){
+        frameViews.addAll(list)
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FramesViewHolder {
@@ -32,7 +39,11 @@ class FramesAdapter(private val frameViews: MutableList<FrameView>, private val 
             with(binding){
                 frameTitle.text = frameView.name
                 frameSubtitle.text = frameView.material
-                frameCover.setImageURI(frameView.imgCover)
+
+                Glide.with(itemView.context)
+                    .load(frameView.imgCover)
+                    .into(frameCover)
+//                frameCover.setImageURI(frameView.imgCover)
 
                 itemView.setOnClickListener {
                     onFrameClick(frameView.name)

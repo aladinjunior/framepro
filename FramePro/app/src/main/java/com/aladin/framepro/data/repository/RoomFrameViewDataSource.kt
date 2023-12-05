@@ -1,9 +1,11 @@
 package com.aladin.framepro.data.repository
 
+import androidx.lifecycle.LiveData
 import com.aladin.framepro.data.db.daos.FrameViewDao
 import com.aladin.framepro.domain.model.Frame
 import com.aladin.framepro.domain.model.FrameView
-import com.aladin.framepro.extensions.toFrameDescription
+import com.aladin.framepro.extensions.map
+import com.aladin.framepro.extensions.toFrameView
 import com.aladin.framepro.extensions.toFrameViewEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,6 +20,13 @@ class RoomFrameViewDataSource @Inject constructor(
             val frameViewEntity = frameView.toFrameViewEntity()
             frameDao.insert(frameViewEntity)
         }
+    }
+
+    override val allCreatedFrameViews: LiveData<List<FrameView>> = frameDao.getAllCreatedFrames().map { listOfFrameView ->
+        listOfFrameView.map { frameViewEntity ->
+            frameViewEntity.toFrameView()
+        }
+
     }
 
     override suspend fun registerFrames(registerId: Long) : List<Frame> {

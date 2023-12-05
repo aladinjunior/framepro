@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.aladin.framepro.data.repository.FrameViewDataSource
 import com.aladin.framepro.domain.model.Frame
 import com.aladin.framepro.domain.model.FrameView
 import com.aladin.framepro.domain.usecase.frame.CreateFrameViewUseCase
@@ -16,6 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddFrameViewModel @Inject constructor(
     application: Application,
+    dataSource: FrameViewDataSource,
     private val createFrameViewUseCase: CreateFrameViewUseCase
 ) : AndroidViewModel(application) {
 
@@ -30,6 +32,7 @@ class AddFrameViewModel @Inject constructor(
 
     val savedOnDb: LiveData<Boolean> get() = _savedOnDb
 
+    val allCreatedFrame : LiveData<List<FrameView>> = dataSource.allCreatedFrameViews
 
     fun buildFrame(name: String, width: Double, height: Double, description: String) : Frame =
         Frame(

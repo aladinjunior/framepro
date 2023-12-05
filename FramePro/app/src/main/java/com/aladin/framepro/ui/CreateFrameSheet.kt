@@ -19,8 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CreateFrameSheet(
-    private val viewModel: AddFrameViewModel,
-    private val onCreatedFrameClick: (frameView: FrameView) -> Unit) : BottomSheetDialogFragment(){
+    private val viewModel: AddFrameViewModel
+) : BottomSheetDialogFragment(){
 
 
     private lateinit var binding: FragmentCreateFrameSheetBinding
@@ -74,7 +74,7 @@ class CreateFrameSheet(
                         dismiss()
                     } else {
                         viewModel.createFrameView(frameView)
-                        onCreatedFrameClick(frameView)
+
                         dismiss()
                     }
 
