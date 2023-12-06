@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
         with(binding){
             bttnRegister.setOnClickListener{
                 NewRegisterSheet(Navigation()).show(this@MainActivity.supportFragmentManager, "newRegisterTag")
