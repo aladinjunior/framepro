@@ -1,7 +1,6 @@
 package com.aladin.framepro.ui
 
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -59,7 +58,7 @@ class FramesFragment : Fragment(R.layout.fragment_frames) {
 
         mainActivity?.isEnabledBottomBar(false)
 
-        adapter = FramesAdapter(initialFrames(requireContext())) { frameName ->
+        adapter = FramesAdapter(requireContext(), initialFrames(requireContext())) { frameName ->
             frameSheet = FrameSheet(frameName, viewModel = addFrameViewModel)
             frameSheet.show(requireActivity().supportFragmentManager, "frameTag")
         }

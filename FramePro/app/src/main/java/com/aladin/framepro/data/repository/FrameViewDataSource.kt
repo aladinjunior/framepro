@@ -11,6 +11,6 @@ interface FrameViewDataSource {
 
     val allCreatedFrameViews : LiveData<List<FrameView>>
 
-    suspend fun registerFrames(registerId: Long) : List<Frame>
+
 
 }

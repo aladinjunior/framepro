@@ -12,8 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
-import com.aladin.framepro.domain.model.Frame
-import com.aladin.framepro.domain.model.FrameEntity
 import com.aladin.framepro.domain.model.FrameView
 import com.aladin.framepro.domain.model.FrameViewEntity
 import com.aladin.framepro.domain.model.RegisterEntity
@@ -63,21 +61,6 @@ fun <T, U> LiveData<T>.map(transform: (T) -> U): LiveData<U> {
     return result
 }
 
-
-
-
-fun Frame.toFrameDescriptionEntity() : FrameEntity {
-    return with(this){
-        FrameEntity(
-            registerId = registerId,
-            name = name,
-            width = width,
-            height = height,
-            description = description
-        )
-    }
-}
-
 fun FrameView.toFrameViewEntity() : FrameViewEntity {
     return with(this){
         FrameViewEntity(
@@ -97,27 +80,6 @@ fun FrameViewEntity.toFrameView() : FrameView {
         )
     }
 }
-fun FrameEntity.toFrameDescription() : Frame {
-    return with(this){
-        Frame(
-            registerId = registerId,
-            name = name,
-            width = width,
-            height = height,
-            description = description
-        )
-    }
-}
-
-fun List<FrameEntity>.toFrameDescription() : List<Frame> {
-    return with(this){
-       map {
-           it.toFrameDescription()
-       }
-
-    }
-}
-
 
 fun Fragment.showToast(message: String){
     Toast.makeText(

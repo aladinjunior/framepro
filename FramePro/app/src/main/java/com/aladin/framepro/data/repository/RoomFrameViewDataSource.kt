@@ -29,9 +29,5 @@ class RoomFrameViewDataSource @Inject constructor(
 
     }
 
-    override suspend fun registerFrames(registerId: Long) : List<Frame> {
-        return emptyList()
-//        return frameDao.getRegisterFrame(registerId).toFrameDescription()
-    }
 
 }

@@ -24,7 +24,7 @@ interface DomainModule {
     @Binds
     fun createFrameViewUseCase(useCase: CreateFrameViewUseCaseImpl) : CreateFrameViewUseCase
 
-//    fun createFrameUseCase(useCase: CreateFrameUseCaseImpl) : CreateFrameUseCase
+
 
 
 }

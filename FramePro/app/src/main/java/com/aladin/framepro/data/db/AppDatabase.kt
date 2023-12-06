@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.aladin.framepro.data.db.daos.FrameViewDao
 import com.aladin.framepro.data.db.daos.RegisterDao
-import com.aladin.framepro.domain.model.FrameEntity
 import com.aladin.framepro.domain.model.FrameViewEntity
 import com.aladin.framepro.domain.model.RegisterEntity
 import com.aladin.framepro.extensions.Converters

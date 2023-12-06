@@ -8,22 +8,35 @@
     android:orientation="vertical">
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/register_image"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pdf_bttn"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_name"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:src="@drawable/baseline_picture_as_pdf_24"
+        />
+
+    <TextView
+        android:id="@+id/register_name"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/avatar"
+        android:layout_marginTop="10dp"
         android:text="@string/result"
+        android:textColor="@color/white"
         android:textSize="26sp"
-        android:textStyle="bold"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:shapeAppearanceOverlay="@style/RoundedSquare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:layout_centerHorizontal="true"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/register_image"
+        android:layout_below="@id/register_name"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
