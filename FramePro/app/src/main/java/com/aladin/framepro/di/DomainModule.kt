@@ -1,5 +1,7 @@
 package com.aladin.framepro.di
 
+import com.aladin.framepro.domain.usecase.file.CreatePdfUseCase
+import com.aladin.framepro.domain.usecase.file.CreatePdfUseCaseImpl
 import com.aladin.framepro.domain.usecase.frame.CreateFrameViewUseCase
 import com.aladin.framepro.domain.usecase.frame.CreateFrameViewUseCaseImpl
 import com.aladin.framepro.domain.usecase.register.CreateRegisterUseCase
@@ -23,6 +25,9 @@ interface DomainModule {
 
     @Binds
     fun createFrameViewUseCase(useCase: CreateFrameViewUseCaseImpl) : CreateFrameViewUseCase
+
+    @Binds
+    fun createPdfUseCase(useCase: CreatePdfUseCaseImpl) : CreatePdfUseCase
 
 
 

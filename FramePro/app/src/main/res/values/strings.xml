@@ -50,4 +50,6 @@
     <string name="material">Material</string>
     <string name="frame_name">Nome da Esquadria</string>
     <string name="pick_image">Escolha uma Imagem</string>
+    <string name="created_pdf">Pdf Criado.</string>
+    <string name="document">Documento</string>
 </resources>

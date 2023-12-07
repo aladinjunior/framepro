@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.aladin.framepro.R
+import com.aladin.framepro.domain.model.Frame
 import com.aladin.framepro.domain.model.FrameView
 import com.aladin.framepro.domain.model.FrameViewEntity
 import com.aladin.framepro.domain.model.RegisterEntity
@@ -102,3 +103,7 @@ fun View.oval(@ColorInt color: Int) : ShapeDrawable {
 
 fun resourcesToUri(context: Context, resourceId: Int): Uri =
     Uri.parse("android.resource://" + context.packageName + "/" + resourceId)
+
+fun createFramesNameTemplate(frame: Frame) : String =
+    "Nome da Esquadria = " + frame.name + ", Largura = " + frame.width.toString() + "L - Altura = " + frame.height.toString() + "h - Descrição = " + frame.description + "\n"
+
